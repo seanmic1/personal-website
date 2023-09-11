@@ -1,7 +1,6 @@
 'use client'
 
 import Hero from "@/components/Hero"
-import Features from "@/components/Features"
 import {Box, useColorModeValue}  from "@chakra-ui/react"
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
     <>
       <Box bg={useColorModeValue('white','black')}>
         <Hero/>
-        <Features/>
       </Box>
     </>
   )

@@ -15,27 +15,16 @@ export default function ClientComponent({
 }: {
   children: React.ReactNode
 }) {
-    if (['/dashboard'].includes(usePathname())){
-        return (
-          <html lang="en">
-            <body className={inter.className}>
-                <Providers>
-                  {children}
-                </Providers>
-              </body>
-          </html>
-        )
-      }
     
-      return (
-        <html lang="en">
-          <body className={inter.className}>
-            <Providers>
-              <Navbar/>
-              {children}
-              <Footer/>
-            </Providers>
-            </body>
-        </html>
-      )
+    return (
+      <html lang="en">
+        <body className={inter.className}>
+          <Providers>
+            <Navbar/>
+            {children}
+            <Footer/>
+          </Providers>
+          </body>
+      </html>
+    )
 }
