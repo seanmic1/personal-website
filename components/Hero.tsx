@@ -16,7 +16,7 @@ import {
 export default function CallToActionWithAnnotation() {
   return (
     <>
-      <Container maxW={'3xl'} py={'60px'}>
+      <Container maxW={'3xl'} py={{base:'100px', md:'20px'}}>
         <Stack
           as={Box}
           textAlign={'center'}
@@ -24,9 +24,9 @@ export default function CallToActionWithAnnotation() {
           py={{ base: 20, md: 36 }}>
           <Heading
             fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            fontSize={{ base: '4xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            Hi, I'm <br />
+            Hi, I&apos;m <br />
             <Text as={'span'} color={'blue.400'}>
               Sean Michael
             </Text>
@@ -42,7 +42,7 @@ export default function CallToActionWithAnnotation() {
             position={'relative'}>
             <Button
               as={'a'}
-              href='#About'
+              href='/profile'
               colorScheme={'blue'}
               bg={'blue.400'}
               rounded={'full'}
@@ -53,7 +53,7 @@ export default function CallToActionWithAnnotation() {
               Learn more about me!
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-              or download my resume.
+              or download my resume
             </Button>
           </Stack>
         </Stack>

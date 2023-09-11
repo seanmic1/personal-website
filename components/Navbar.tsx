@@ -247,12 +247,16 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
+    label: 'Home',
+    href: '/',
+  },
+  {
     label: 'About',
     children: [
       {
         label: 'Profile',
         subLabel: 'An overview',
-        href: '#',
+        href: '/profile',
       },
       {
         label: 'Background',
