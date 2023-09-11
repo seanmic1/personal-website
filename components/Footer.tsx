@@ -12,17 +12,9 @@ import {
 } from '@chakra-ui/react'
 import { SiVercel } from 'react-icons/si'
 
-const Logo = (props: any) => {
-  return (
-    <Text>
-      Sean
-    </Text>
-  )
-}
-
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2} color={useColorModeValue('black', 'white')}>
+    <Text fontWeight={'500'} fontSize={'md'} mb={2} color={useColorModeValue('black', 'white')}>
       {children}
     </Text>
   )
@@ -38,7 +30,8 @@ export default function Footer() {
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
           templateColumns={{ sm: '1fr', md: '2fr 1fr 1fr' }}
-          spacing={8}>
+          spacing={8}
+          fontSize={'sm'}>
           <Stack spacing={6}>
             <Box>
               <SiVercel color={useColorModeValue('black', 'white')} />
