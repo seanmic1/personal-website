@@ -46,7 +46,7 @@ export default function Profile() {
       
         <Flex direction={'row'} justify={'center'} pt={'30px'} px={'15%'}>
 
-          <Image src='/SeanPic.jpg' height={'30rem'} width={'20rem'} objectFit={'cover'} p={5} rounded={'lg'}></Image>
+          <Image src='/SeanPic.jpg' alt='Picture of Sean' height={'30rem'} width={'20rem'} objectFit={'cover'} p={5} rounded={'lg'}></Image>
 
           <Spacer></Spacer>
 
@@ -68,11 +68,11 @@ export default function Profile() {
               Hey! Thanks for visiting this page.
             </Heading>
             <Text letterSpacing={'wide'} lineHeight={'6'} pt={4}>
-            I'm Sean Michael, a Computer Science Graduate currenty based in Doha, Qatar, but willing to relocate anywhere for a job. 
+            I&apos;m Sean Michael, a Computer Science Graduate currenty based in Doha, Qatar, but willing to relocate anywhere for a job. 
             <br></br>
-            I consider myself a casual coder, but I'm now actively working on digging into Web Dev and ML technologies as a hobby.
+            I consider myself a casual coder, but I&apos;m now actively working on digging into Web Dev and ML technologies as a hobby.
             <br></br>
-            Aside from that, my hobbies are gaming and music. I'm currently learning the saxophone as well 🎷
+            Aside from that, my hobbies are gaming and music. I&apos;m currently learning the saxophone as well 🎷
             {/* <br></br>
             I'm naturally a curious person, currently learning all sorts of frameworks or technologies available on the web. I learn fast and adapt even faster, something that is needed in today's software development landscape. If you think I'd be a good fit to your team, you can contact me here. */}
             </Text>
@@ -84,8 +84,8 @@ export default function Profile() {
             <Wrap py={4}>
                 {skills.map((skill) => 
                 (
-                  <WrapItem>
-                    <Tag key={skill} size={'lg'} mx={2}>{skill}</Tag>
+                  <WrapItem key={skill}>
+                    <Tag size={'lg'} mx={2}>{skill}</Tag>
                   </WrapItem>
                 ))}
             </Wrap>

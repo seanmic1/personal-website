@@ -112,7 +112,8 @@ const DesktopNav = () => {
                   {navItem.label} 
 
                   {navItem.children && <Icon
-                  color={useColorModeValue('black','white')} 
+                  color='white'
+                  _dark={{color: 'black'}} 
                   w={5} 
                   h={5} 
                   as={ChevronDownIcon}
