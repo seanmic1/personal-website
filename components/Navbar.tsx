@@ -17,6 +17,7 @@ import {
   useDisclosure,
   ColorModeContext,
   Center,
+  Image,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -58,10 +59,9 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Center>
-            {/* pic here */}
-            Sean
-          </Center>
+          <a href='/' >
+          <Image src='/logo.png' alt='SEAN ML'></Image>
+          </a>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
@@ -72,9 +72,9 @@ export default function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <ColorModeButton></ColorModeButton>
-          
+        <ColorModeButton></ColorModeButton>
         </Stack>
+
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -112,8 +112,7 @@ const DesktopNav = () => {
                   {navItem.label} 
 
                   {navItem.children && <Icon
-                  color='white'
-                  _dark={{color: 'black'}} 
+                  color={linkColor}
                   w={5} 
                   h={5} 
                   as={ChevronDownIcon}
@@ -248,31 +247,12 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'Home',
-    href: '/',
-  },
-  {
     label: 'About',
     children: [
       {
         label: 'Profile',
         subLabel: 'An overview',
         href: '/profile',
-      },
-      {
-        label: 'Background',
-        subLabel: 'Dive into the past',
-        href: '#',
-      },
-      {
-        label: 'Education',
-        subLabel: 'Alma matres',
-        href: '#',
-      },
-      {
-        label: 'Experience',
-        subLabel: 'Things I did',
-        href: '#',
       },
       {
         label: 'Resume',
@@ -283,14 +263,14 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Blog',
-    href: '#',
+    href: '/blog',
   },
   {
     label: 'Projects',
-    href: '#',
+    href: '/projects',
   },
   {
     label: 'Contact',
-    href: '#',
+    href: '/contact',
   }
 ]

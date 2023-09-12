@@ -1,30 +1,20 @@
 'use client'
 
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Providers } from "./providers"
-import { usePathname } from 'next/navigation';
+import { CacheProvider } from '@chakra-ui/next-js'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from '@/app/theme'
 
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
-
-const inter = Inter({ subsets: ['latin'] })
  
 export default function ClientComponent({
   children,
 }: {
   children: React.ReactNode
 }) {
-    
-    return (
-      <html lang="en">
-        <body className={inter.className}>
-          <Providers>
-            <Navbar/>
-            {children}
-            <Footer/>
-          </Providers>
-          </body>
-      </html>
-    )
+  return (
+    <CacheProvider>
+      <ChakraProvider theme={theme}>
+        {children}
+      </ChakraProvider>
+    </CacheProvider>
+  )
 }

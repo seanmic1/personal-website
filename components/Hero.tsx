@@ -1,6 +1,5 @@
 'use client'
 
-import Head from 'next/head'
 import {
   Box,
   Heading,
@@ -8,54 +7,80 @@ import {
   Text,
   Button,
   Stack,
-  Icon,
-  useColorModeValue,
   createIcon,
+  chakra,
+  shouldForwardProp,
+  Center
 } from '@chakra-ui/react'
+
+import { motion, isValidMotionProp } from 'framer-motion'
+
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
 
 export default function CallToActionWithAnnotation() {
   return (
     <>
-      <Container maxW={'3xl'} py={{base:'100px', md:'20px'}}>
+      <Container py={{base:'50px', md:'0px'}}>
         <Stack
           as={Box}
           textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
           py={{ base: 20, md: 36 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '4xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            Hi, I&apos;m <br />
-            <Text as={'span'} color={'blue.400'}>
-              Sean Michael
-            </Text>
-          </Heading>
-          <Text color={'gray.500'}>
-          A fresh Computer Science graduate with a deep interest in software development and a drive to make a difference in this world.
-          </Text>
-          <Stack
-            direction={'column'}
-            spacing={3}
-            align={'center'}
-            alignSelf={'center'}
-            position={'relative'}>
-            <Button
-              as={'a'}
-              href='/profile'
-              colorScheme={'blue'}
-              bg={'blue.400'}
-              rounded={'full'}
-              px={6}
-              _hover={{
-                bg: 'blue.500',
-              }}>
-              Learn more about me!
-            </Button>
-            <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-              or download my resume
-            </Button>
-          </Stack>
+          <ChakraBox
+            initial={{ opacity: 0, y:50}}
+            animate={{ opacity: 1, y:0}}
+            // @ts-ignore
+            transition={{ ease:'easeOut', duration: 0.5}}>
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: '4xl', sm: '4xl', md: '6xl' }}>
+              Hi, I&apos;m <br />
+              <Text as={'span'} color={'blue.400'}>
+                Sean Michael
+              </Text>
+            </Heading>
+          </ChakraBox>
+          <ChakraBox
+            initial={{ opacity: 0, y:50}}
+            animate={{ opacity: 1, y:0}}
+            // @ts-ignore
+            transition={{ ease:'easeOut', duration: 0.5, delay: 0.5}}>
+            <Center>
+              <Text color={'gray.500'} w={'30rem'}>
+              A fresh Computer Science graduate with a deep interest in software development and a drive to make a difference in this world.
+              </Text>
+            </Center>
+          </ChakraBox>
+          <ChakraBox
+            initial={{ opacity: 0, y:50}}
+            animate={{ opacity: 1, y:0}}
+            // @ts-ignore
+            transition={{ ease:'easeOut', duration: 0.5, delay: 1}}>
+            <Stack
+              direction={'column'}
+              spacing={3}
+              align={'center'}
+              alignSelf={'center'}
+              position={'relative'}>
+              <Button
+                as={'a'}
+                href='/profile'
+                colorScheme={'blue'}
+                bg={'blue.400'}
+                rounded={'full'}
+                px={6}
+                _hover={{
+                  bg: 'blue.500',
+                }}>
+                Learn more about me!
+              </Button>
+              <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
+                or download my resume
+              </Button>
+            </Stack>
+          </ChakraBox>
         </Stack>
       </Container>
     </>
