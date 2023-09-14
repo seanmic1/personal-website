@@ -18,6 +18,7 @@ import {
   ColorModeContext,
   Center,
   Image,
+  useColorMode,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -29,6 +30,7 @@ import ColorModeButton from './ColorModeButton'
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
+  const { colorMode, toggleColorMode } = useColorMode()
 
   return (
     <Box position={'fixed'} w={'100%'} as='header' zIndex={'overlay'}>
@@ -60,7 +62,9 @@ export default function Navbar() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <a href='/' >
-          <Image src='/seanml_tp.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image>
+            {colorMode === "light" ? 
+          <Image src='/seanml_tp.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image> :
+          <Image src='/seanml_tp_white.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image>}
           </a>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
