@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { Button, Flex, useColorMode } from '@chakra-ui/react'
-import { BsSun, BsMoonStarsFill } from 'react-icons/bs'
+import { Button, Flex, useColorMode } from "@chakra-ui/react";
+import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 
 export default function ColorModeToggle() {
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     /**
      * Ideally, only the button component should be used (without Flex).
@@ -14,10 +14,11 @@ export default function ColorModeToggle() {
       <Button
         aria-label="Toggle Color Mode"
         onClick={toggleColorMode}
-        _focus={{ boxShadow: 'none' }}
-        w="fit-content">
-        {colorMode === 'light' ? <BsMoonStarsFill /> : <BsSun />}
+        _focus={{ boxShadow: "none" }}
+        w="fit-content"
+      >
+        {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
       </Button>
     </Flex>
-  )
+  );
 }
