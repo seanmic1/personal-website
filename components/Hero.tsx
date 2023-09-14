@@ -22,7 +22,7 @@ const ChakraBox = chakra(motion.div, {
 export default function CallToActionWithAnnotation() {
   return (
     <>
-      <Container py={{base:'50px', md:'0px'}}>
+      <Container py={{base:'50px', md:'30px'}}>
         <Stack
           as={Box}
           textAlign={'center'}
@@ -49,7 +49,7 @@ export default function CallToActionWithAnnotation() {
             transition={{ ease:'easeOut', duration: 0.5, delay: 0.5}}>
             <Center>
               <Text color={'gray.500'} w={'30rem'}>
-              A fresh Computer Science graduate with a deep interest in software development and a drive to make a difference in this world.
+              A fresh Computer Science graduate with a drive to make a difference in this world.
               </Text>
             </Center>
           </ChakraBox>
@@ -74,7 +74,7 @@ export default function CallToActionWithAnnotation() {
                 _hover={{
                   bg: 'blue.500',
                 }}>
-                Learn more about me!
+                Learn more about me
               </Button>
               <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
                 or download my resume
