@@ -25,7 +25,7 @@ export default function Footer() {
     <Box
       bg={useColorModeValue('white', 'black')}
       color={useColorModeValue('gray.700', 'gray.500')}
-      borderTopColor={'gray.200'}
+      borderTopColor={useColorModeValue('gray.200', 'gray.700')}
       borderWidth={'1px'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
@@ -34,7 +34,9 @@ export default function Footer() {
           fontSize={'sm'}>
           <Stack spacing={6}>
             <Box>
-              <Image alt='Sean ML' src='/seanml_tp.png'></Image>
+              {useColorModeValue(
+              <Image alt='Sean ML' src='/seanml_tp.png'></Image>,
+              <Image alt='Sean ML' src='/seanml_tp_white.png'></Image>)}
             </Box>
             <Text fontSize={'sm'}>© 2023</Text>
           </Stack>
