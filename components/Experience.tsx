@@ -51,10 +51,10 @@ export default function Experience() {
               <Text fontSize={"1rem"}>💼 Software Engineer Intern</Text>
               <Text fontSize={"1rem"}>📌 Kuala Lumpur, Malaysia</Text>
               <Flex justify={"end"} pt={4}>
-                <Image maxW={'300px'} src="/images/juris.png" objectFit={"cover"}></Image>  
+                <Image alt="JurisTech Logo" maxW={'300px'} src="/images/juris.png" objectFit={"cover"}></Image>  
               </Flex>
               <Flex justify={"end"} pt={4}>
-                <Image width={"350px"} height={"200px"} src="/images/vertical.jpg" objectFit={"cover"}></Image>
+                <Image alt="The Vertical Towers" width={"350px"} height={"200px"} src="/images/vertical.jpg" objectFit={"cover"}></Image>
               </Flex>
             </Box>
             <Box mx={"1rem"}>
@@ -71,7 +71,7 @@ export default function Experience() {
               <br />
               <br />
               I worked with <strong>PHP</strong> as that was the main programming language the system was built upon, but I also worked with PL/SQL for the <strong>Oracle DB</strong> backend. 
-              I also configured the system be able to recieve and send <strong>API requests</strong> to and from the client's systems.
+              I also configured the system be able to recieve and send <strong>API requests</strong> to and from the client&quot;s systems.
             
             </Text>
           </Stack>
@@ -103,7 +103,7 @@ export default function Experience() {
               As of September 2023, I am actively searching for jobs in the IT industry, particularly as a Software Engineer. 
               <br />
               <br />
-              I'm currently learning full-stack web development to expand my job oppurtunities, and this developing this website is part of my learning process!
+              I&quot;m currently learning full-stack web development to expand my job oppurtunities, and this developing this website is part of my learning process!
               <br />
               <br />
               If you think I would be a good fit at your company, please do contact me at my <Text as={'a'} href="/contact" color={'blue.300'}>contact page</Text>.
