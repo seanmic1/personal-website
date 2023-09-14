@@ -40,21 +40,21 @@ const skills = [
 
 export default function Profile() {
   return (
-    <Container maxW={'container.lg'} py={{base:'100px', md:'20px'}} centerContent>
+    <Container maxW={'container.lg'} pt={{base:'100px', md:'20px'}} centerContent>
       <Stack direction={{base:'column', md:'row'}}>
         <Image src='/SeanPic_cutout.png' alt='Picture of Sean' height={'30rem'} width={'20rem'} objectFit={'cover'} objectPosition={'15px 0px'} p={4} borderRadius={'full'} ></Image>
         <Center p={4}>
           <Stack textAlign={'center'}>
-            <Heading fontSize={'3xl'}>About me</Heading>
+            <Heading fontSize={'3rem'} color={'blue.400'}>About me</Heading>
             <Text color={useColorModeValue('gray.600','gray.400')} fontSize={'l'}>
             The page where I talk about myself
             </Text>
           </Stack>
         </Center>
       </Stack>
-      <Stack direction={{base:'column', md:'row'}} w={'100%'} justify={'center'} pt={'5rem'}>
-        <Box p={4}>
-          <Heading fontSize={'2xl'}>
+      <Stack direction={{base:'column', md:'row'}} justify={'center'} pt={'5rem'} alignContent={'center'}>
+        <Box p={5} width={{base:'100%',md:'50%'}}>
+          <Heading fontSize={'2rem'} color={'blue.400'}>
             Hey! Thanks for visiting.
           </Heading>
           <Text letterSpacing={'wide'} lineHeight={'6'} pt={4}>
@@ -67,14 +67,14 @@ export default function Profile() {
           I'm naturally a curious person, currently learning all sorts of frameworks or technologies available on the web. I learn fast and adapt even faster, something that is needed in today's software development landscape. If you think I'd be a good fit to your team, you can contact me here. */}
           </Text>
         </Box>  
-        <Box p={4}>
-          <Heading fontSize={'2xl'}>
+        <Box p={5} width={{base:'100%',md:'50%'}}>
+          <Heading fontSize={'2rem'} color={'blue.400'}>
             My skills
           </Heading>
           <Wrap py={4}>
               {skills.map((skill) => 
               (<WrapItem key={skill}>
-                  <Tag size={'lg'} mx={2}>{skill}</Tag>
+                  <Tag size={'lg'}>{skill}</Tag>
                 </WrapItem>
               ))}
           </Wrap>
