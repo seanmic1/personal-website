@@ -74,6 +74,8 @@ export default function Navbar() {
           spacing={6}>
         </Stack>
 
+        <ColorModeButton></ColorModeButton>
+
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
