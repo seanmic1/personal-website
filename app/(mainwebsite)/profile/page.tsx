@@ -1,10 +1,10 @@
 import Profile from '@/components/Profile'
 
-export default function BlogList() {
+export default function ProfilePage() {
   
   return (
     <>
-      WIP
+      <Profile></Profile>
     </>
   )
 }
