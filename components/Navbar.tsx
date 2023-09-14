@@ -60,7 +60,7 @@ export default function Navbar() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <a href='/' >
-          <Image src='/logo.png' alt='SEAN ML'></Image>
+          <Image src='/seanml_tp.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image>
           </a>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -72,7 +72,6 @@ export default function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-        <ColorModeButton></ColorModeButton>
         </Stack>
 
       </Flex>
@@ -92,7 +91,7 @@ const DesktopNav = () => {
   return (
     <Stack direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label} className=''>
+        <Center key={navItem.label} className=''>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Stack direction={'row'} align={'center'}>
@@ -139,7 +138,7 @@ const DesktopNav = () => {
               </PopoverContent>
             )}
           </Popover>
-        </Box>
+        </Center>
       ))}
     </Stack>
   )
@@ -256,7 +255,7 @@ const NAV_ITEMS: Array<NavItem> = [
       },
       {
         label: 'Resume',
-        subLabel: 'For professional use (or the curious)',
+        subLabel: 'For the professionals (or the curious)',
         href: '#',
       },
     ],
