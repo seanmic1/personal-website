@@ -1,5 +1,8 @@
 'use client'
 
+import getPosts, { getPost } from '@/lib/getPosts'
+import { Post } from '@/lib/types'
+
 import {
   Box,
   Heading,
@@ -15,6 +18,7 @@ import {
   Container,
   VStack,
 } from '@chakra-ui/react'
+
 
 interface IBlogTags {
   tags: Array<string>
@@ -63,10 +67,11 @@ const BlogAuthor = (props: BlogAuthorProps) => {
   )
 }
 
-const ArticleList = () => {
+export default function BlogList(posts: {posts: (Post | null)[]}) {
+
   return (
-    <Container maxW={'7xl'} p="12">
-      <Heading as="h1">Stories by Chakra Templates</Heading>
+    <Container maxW={'7xl'} p="12" pt={'100px'}>
+      <Heading as="h1">Sean&apos;s Blog</Heading>
       <Box
         marginTop={{ base: '1', sm: '5' }}
         display="flex"
@@ -115,7 +120,7 @@ const ArticleList = () => {
           <BlogTags tags={['Engineering', 'Product']} />
           <Heading marginTop="1">
             <Text textDecoration="none" _hover={{ textDecoration: 'none' }}>
-              Blog article title
+              {posts.posts.at(0)?.title}
             </Text>
           </Heading>
           <Text
@@ -123,10 +128,7 @@ const ArticleList = () => {
             marginTop="2"
             color={useColorModeValue('gray.700', 'gray.200')}
             fontSize="lg">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry&apos;s standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled it to make
-            a type specimen book.
+            {posts.posts.at(0)?.description}
           </Text>
           <BlogAuthor name="John Doe" date={new Date('2021-04-06T19:01:27Z')} />
         </Box>
@@ -136,7 +138,7 @@ const ArticleList = () => {
       </Heading>
       <Divider marginTop="5" />
       <Wrap spacing="30px" marginTop="5">
-        <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}>
+          <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}>
           <Box w="100%">
             <Box borderRadius="lg" overflow="hidden">
               <Box textDecoration="none" _hover={{ textDecoration: 'none' }}>
@@ -158,7 +160,7 @@ const ArticleList = () => {
             <BlogTags tags={['Engineering', 'Product']} marginTop={3} />
             <Heading fontSize="xl" marginTop="2">
               <Text textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                Some blog title
+                yuh
               </Text>
             </Heading>
             <Text as="p" fontSize="md" marginTop="2">
@@ -195,8 +197,9 @@ const ArticleList = () => {
           Curabitur neque tortor, mattis nec lacus non, placerat congue elit.
         </Text>
       </VStack>
+      <Text>
+        {posts.posts.at(0)?.title}
+      </Text>
     </Container>
   )
 }
-
-export default ArticleList
