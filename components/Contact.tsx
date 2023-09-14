@@ -22,6 +22,8 @@ import {
 } from '@chakra-ui/react'
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from 'react-icons/bs'
 import { MdEmail, MdOutlineEmail } from 'react-icons/md'
+import { useForm, ValidationError } from '@formspree/react';
+import { CheckCircleIcon } from '@chakra-ui/icons';
 
 const confetti = {
   light: {
@@ -40,6 +42,21 @@ const CONFETTI_DARK = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2
 
 export default function ContactFormWithSocialButtons() {
   const { hasCopied, onCopy } = useClipboard('seanlasono@gmail.com')
+
+  const [state, handleSubmit] = useForm("xknlrlwy");
+  if (state.succeeded) {
+      return (
+        <Box textAlign="center" py={"300px"} px={6}>
+        <CheckCircleIcon boxSize={'50px'} color={'green.500'} />
+        <Heading as="h2" size="xl" mt={6} mb={2}>
+          Message sent!
+        </Heading>
+        <Text color={'gray.500'}>
+          Thanks for taking the time to contact me.
+        </Text>
+      </Box>
+      )
+  }
 
   return (
     <Flex
@@ -118,59 +135,63 @@ export default function ContactFormWithSocialButtons() {
                   />
                 </Box>
               </Stack>
+              
+              <form onSubmit={handleSubmit}>
+                <Box
+                  bg={useColorModeValue('white', 'gray.700')}
+                  borderRadius="lg"
+                  p={8}
+                  color={useColorModeValue('gray.700', 'whiteAlpha.900')}
+                  shadow="base">
+                  <VStack spacing={5}>
+                    <FormControl isRequired>
+                      <FormLabel>Name</FormLabel>
 
-              <Box
-                bg={useColorModeValue('white', 'gray.700')}
-                borderRadius="lg"
-                p={8}
-                color={useColorModeValue('gray.700', 'whiteAlpha.900')}
-                shadow="base">
-                <VStack spacing={5}>
-                  <FormControl isRequired>
-                    <FormLabel>Name</FormLabel>
+                      <InputGroup>
+                        <InputLeftElement>
+                          <BsPerson />
+                        </InputLeftElement>
+                        <Input type="text" name="name" placeholder="Your Name" />
+                      </InputGroup>
+                    </FormControl>
 
-                    <InputGroup>
-                      <InputLeftElement>
-                        <BsPerson />
-                      </InputLeftElement>
-                      <Input type="text" name="name" placeholder="Your Name" />
-                    </InputGroup>
-                  </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Email</FormLabel>
 
-                  <FormControl isRequired>
-                    <FormLabel>Email</FormLabel>
+                      <InputGroup>
+                        <InputLeftElement>
+                          <MdOutlineEmail />
+                        </InputLeftElement>
+                        <Input type="email" name="email" placeholder="Your Email" />
+                      </InputGroup>
+                    </FormControl>
 
-                    <InputGroup>
-                      <InputLeftElement>
-                        <MdOutlineEmail />
-                      </InputLeftElement>
-                      <Input type="email" name="email" placeholder="Your Email" />
-                    </InputGroup>
-                  </FormControl>
+                    <FormControl isRequired>
+                      <FormLabel>Message</FormLabel>
 
-                  <FormControl isRequired>
-                    <FormLabel>Message</FormLabel>
+                      <Textarea
+                        name="message"
+                        placeholder="Your Message"
+                        rows={6}
+                        resize="none"
+                      />
+                    </FormControl>
 
-                    <Textarea
-                      name="message"
-                      placeholder="Your Message"
-                      rows={6}
-                      resize="none"
-                    />
-                  </FormControl>
-
-                  <Button
-                    colorScheme="blue"
-                    bg="blue.400"
-                    color="white"
-                    _hover={{
-                      bg: 'blue.500',
-                    }}
-                    width="full">
-                    Send Message
-                  </Button>
-                </VStack>
-              </Box>
+                    <Button
+                      type='submit'
+                      disabled={state.submitting}
+                      colorScheme="blue"
+                      bg="blue.400"
+                      color="white"
+                      _hover={{
+                        bg: 'blue.500',
+                      }}
+                      width="full">
+                      Send Message
+                    </Button>
+                  </VStack>
+                </Box>
+              </form>
             </Stack>
           </VStack>
         </Box>
