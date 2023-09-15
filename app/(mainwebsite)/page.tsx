@@ -1,6 +1,6 @@
 'use client'
 
-import Hero from "@/components/Hero"
+import Hero from "@/app/(mainwebsite)/components/Hero"
 
 export default function Home() {
   
