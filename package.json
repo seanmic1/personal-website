@@ -20,6 +20,7 @@
     "@types/react-dom": "18.2.7",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "file-saver": "^2.0.5",
     "framer-motion": "^10.16.4",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
@@ -30,13 +31,16 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
     "react-slick": "^0.29.0",
-    "tailwindcss": "^3.3.3",
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/file-saver": "^2.0.5",
     "@types/react-slick": "^0.23.10",
     "autoprefixer": "^10.4.15",
+    "file-loader": "^6.2.0",
     "postcss": "^8.4.29",
-    "prettier": "3.0.3"
+    "prettier": "3.0.3",
+    "tailwindcss": "^3.3.3"
   }
 }
