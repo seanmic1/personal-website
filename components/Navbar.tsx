@@ -262,7 +262,7 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: 'Resume',
         subLabel: 'For the professionals (or the curious)',
-        href: '#',
+        href: '/resume',
       },
     ],
   },
