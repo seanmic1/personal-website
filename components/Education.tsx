@@ -52,7 +52,7 @@ export default function Education() {
                 <Text fontSize={"1.5rem"} fontWeight={'semibold'}>Middle East International School</Text>
                 <Text fontSize={"1rem"}>📌 Doha, Qatar</Text>
                 <Flex justify={"end"} pt={4}>
-                  <Image width={"400px"} height={"200px"} src="/images/mis.jpeg" objectFit={"cover"}></Image>
+                  <Image alt="Middle East International School" width={"400px"} height={"200px"} src="/images/mis.jpeg" objectFit={"cover"}></Image>
                 </Flex>
               </Box>
               <Box mx={"1rem"}>
@@ -99,7 +99,7 @@ export default function Education() {
               <Text fontSize={"1.5rem"} fontWeight={'semibold'}>Monash University Malaysia</Text>
               <Text fontSize={"1rem"}>📌 Subang Jaya, Malaysia</Text>
               <Flex justify={"end"} pt={4}>
-                <Image width={"400px"} height={"200px"} src="/images/monash.jpeg" objectFit={"cover"} transform={"0 10"}></Image>
+                <Image alt="Monash University Malaysia" width={"400px"} height={"200px"} src="/images/monash.jpeg" objectFit={"cover"} transform={"0 10"}></Image>
               </Flex>
             </Box>
             <Box mx={"1rem"}>
