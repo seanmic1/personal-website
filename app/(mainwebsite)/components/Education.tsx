@@ -65,11 +65,6 @@ export default function Education() {
                 standards.
                 <br />
                 <br />
-                In my high school years, I undertook AP Biology, AP English
-                Literature, AP Macroeconomics, and AP Microeconomics, which are 
-                <strong> college-level classes</strong> taken during high school.
-                <br />
-                <br />
                 I served as the <strong>Student Council Grade 11 representative</strong> in 2019 and was selected to be the <strong>Student Council President</strong> in 2020.
                 <br />
                 <br />I graduated and got my high school diploma here with high

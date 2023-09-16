@@ -23,13 +23,13 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue('white', 'black')}
+      bg={useColorModeValue('gray.100', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.500')}
-      borderTopColor={useColorModeValue('gray.200', 'gray.700')}
+      borderColor={useColorModeValue('gray.200', 'gray.700')}
       borderWidth={'1px'}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: '1fr', md: '2fr 1fr 1fr' }}
+          templateColumns={{ sm: '1fr 1fr 1fr', md: '3fr 1fr 1fr' }}
           spacing={8}
           fontSize={'sm'}>
           <Stack spacing={6}>

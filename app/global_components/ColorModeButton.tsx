@@ -5,6 +5,7 @@ import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 
 export default function ColorModeToggle() {
   const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     /**
      * Ideally, only the button component should be used (without Flex).
