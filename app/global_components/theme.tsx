@@ -3,6 +3,10 @@ import { withProse } from '@nikolovlazar/chakra-ui-prose'
 
 const theme = extendTheme(
   withProse(),
+  {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+  }
 )
 
 export default theme
