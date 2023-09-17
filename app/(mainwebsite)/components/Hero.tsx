@@ -10,7 +10,8 @@ import {
   createIcon,
   chakra,
   shouldForwardProp,
-  Center
+  Center,
+  Link
 } from '@chakra-ui/react'
 
 import { motion, isValidMotionProp } from 'framer-motion'
@@ -76,9 +77,11 @@ export default function CallToActionWithAnnotation() {
                 }}>
                 Learn more about me
               </Button>
-              <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-                or download my resume
-              </Button>
+              <Link href='/resume'>
+                <Button variant={'link'} colorScheme={'blue'} size={'sm'} >
+                  or download my resume
+                </Button>
+              </Link>
             </Stack>
           </ChakraBox>
         </Stack>
