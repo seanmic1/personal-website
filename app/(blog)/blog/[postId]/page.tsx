@@ -37,14 +37,19 @@ export default async function Post({ params }: { params: { postId: string } }) {
     return notFound();
   }
 
-  const { title, date, contentHtml } = await getPostData(postId);
+  const { title, date, author, readtime, coverimage, contentHtml } = await getPostData(postId);
 
   const pubDate = getFormattedDate(date);
 
   return (
-    <main className="py-12 prose prose-xl dark:prose-invert px-6 mx-auto">
-      <h1 className="text-3xl mt-4 mb-0">{title}</h1>
-      <p className="mt-0">{pubDate}</p> 
+    <main className="py-2 prose prose-xl dark:prose-invert px-4 mx-auto">
+      <div className="flex w-full justify-center items-center">
+        <img className="h-80 w-full object-cover" src={coverimage}/>
+      </div>
+      <h1 className=" text-4xl mt-4 mb-0">{title}</h1>
+      <p className="my-0 font-mono">{pubDate}</p> 
+      <p className="my-0 font-extralight">{author}</p> 
+      <p className="my-0">{readtime} read time</p> 
       <article> 
         <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
           <p>
