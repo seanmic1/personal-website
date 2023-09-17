@@ -2,6 +2,11 @@
 
 import { Button, Flex } from "@chakra-ui/react";
 import {saveAs} from "file-saver";
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Resume Page',
+}
 
 
 export default function ResumePage() {
