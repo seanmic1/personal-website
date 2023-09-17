@@ -3,7 +3,8 @@ import ClientComponent from "../global_components/client"
 import { Inter } from "next/font/google"
 import Navbar from "@/app/global_components/Navbar"
 import Footer from "@/app/global_components/Footer"
-import { Analytics } from "@vercel/analytics/react"
+
+import GoogleAnalytics from "@/app/GoogleAnalytics" 
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,12 +24,12 @@ export default function RootLayout({
           <link rel="icon" type="image/png" sizes="any" href="/seanml_tp.png"/>
       </head>
       <body className={inter.className}>
+        <GoogleAnalytics/>
         <ClientComponent>
           <Navbar></Navbar>
           {children}
           <Footer></Footer>
         </ClientComponent>
-        <Analytics/>
       </body>
     </html>
   )
