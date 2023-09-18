@@ -6,8 +6,8 @@ export default function Projects() {
       <Box pt={'60px'}></Box>
       
       <Container>
-        <Center p={'50%'}>
-          WIP
+        <Center py="50%" px={'20%'}>
+          Coming soon!
         </Center>
       </Container>
     </>
