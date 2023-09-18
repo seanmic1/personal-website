@@ -3,7 +3,7 @@ title: 'The Wonderful World of Web: A Story of Learning Web Dev'
 date: '2023-09-17'
 author: 'Sean Michael'
 readtime: '4 mins'
-coverimage: 'https://media.istockphoto.com/id/1158203931/vector/burnout-concept-illustration-with-exhausted-man-office-worker-sitting-at-the-table.jpg?s=612x612&w=0&k=20&c=P3KVlWl8Fs3B4uIeL75jDaRF-0zfGgFeqeB7cUR5m-w='
+coverimage: '/blogPics/frustrated-dev.jpg'
 ---
 
 > I'm never going to be a frontend developer, CSS is annoying.

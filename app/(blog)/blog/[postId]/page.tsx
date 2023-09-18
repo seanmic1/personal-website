@@ -2,6 +2,7 @@ import Link from "next/link";
 import getFormattedDate from "../../lib/getFormattedDate";
 import { getPostData, getSortedPostsData } from "../../lib/posts";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 
 export function generateStaticParams() {
   const posts = getSortedPostsData();
@@ -44,11 +45,11 @@ export default async function Post({ params }: { params: { postId: string } }) {
   return (
     <main className="py-2 prose prose-xl dark:prose-invert px-4 mx-auto">
       <div className="flex w-full justify-center items-center">
-        <img className="h-80 w-full object-cover" src={coverimage}/>
+        <Image height={"200"} width={"400"} alt="Blog cover image" className="h-80 w-full object-cover" src={coverimage}/>
       </div>
       <h1 className=" text-4xl mt-4 mb-0">{title}</h1>
       <p className="my-0 font-mono">{pubDate}</p> 
-      <p className="my-0 font-extralight">{author}</p> 
+      <p className="my-0 font-light">{author}</p> 
       <p className="my-0">{readtime} read time</p> 
       <article> 
         <section dangerouslySetInnerHTML={{ __html: contentHtml }} />
