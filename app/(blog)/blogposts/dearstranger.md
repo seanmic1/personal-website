@@ -13,7 +13,7 @@ In today's fast-paced digital world, genuine human connection can sometimes feel
 The concept behind "Dear Stranger" is beautifully simple: an app where people can anonymously write and reply to letters. Imagine leaving a heartfelt note in a public place, only to have it discovered and responded to by a passerby. "Dear Stranger" captures the essence of these chance encounters, providing a platform for meaningful, anonymous interactions in the digital realm.
 
 <figure>
-    <img src="https://raw.githubusercontent.com/seanmic1/seanmic1.github.io/main/assets/png/website%20preview.png"
+    <img src="https://github.com/seanmic1/personal-website/blob/main/public/blogPics/dearstrangerhome.png?raw=true"
          alt="Dear Website Home Page">
     <figcaption>Dear Website Home Page</figcaption>
 </figure>
