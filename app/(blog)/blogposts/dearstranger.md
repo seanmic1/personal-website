@@ -54,7 +54,3 @@ Stay tuned for updates on this exciting project, and in the meantime, feel free 
 
 To try it out, visit [Dear Stranger](https://dear-stranger.vercel.app/).
 
----
-
-*Note: The above article is a markdown representation. You can convert it to HTML or use a markdown editor to format and publish it on your website or blog.*
-
