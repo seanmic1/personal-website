@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Projects Page',
 }
 
-export default function BlogList() {
+export default function ProjectsList() {
   
   return (
     <>
