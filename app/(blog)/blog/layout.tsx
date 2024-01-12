@@ -30,7 +30,7 @@ export default function RootLayout({
           </Script>
             <link rel="icon" type="image/png" sizes="any" href="/seanml_tp.png"/>
         </head>
-        <body className="dark:bg-slate-800">
+        <body className="dark:bg-black">
             {children}
         </body>
       </html>
