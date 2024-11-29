@@ -71,8 +71,7 @@ export default function Experience() {
               <br />
               <br />
               I worked with <strong>PHP</strong> as that was the main programming language the system was built upon, but I also worked with PL/SQL for the <strong>Oracle DB</strong> backend. 
-              I also configured the system be able to recieve and send <strong>API requests</strong> to and from the client&quot;s systems.
-            
+              I also configured the system be able to recieve and send <strong>API requests</strong> to and from the client&#39;s systems.
             </Text>
           </Stack>
           </ChakraBox>
@@ -92,21 +91,51 @@ export default function Experience() {
               textAlign={"end"}
               pb={"2rem"}
             >
-              <Text>Now</Text>
-              <Text fontSize={"1.5rem"} fontWeight={'semibold'}>Looking for work</Text>
+              <Text>Feb 2024 - Present</Text>
+              <Text fontSize={"1.5rem"} fontWeight={'semibold'}>Juris Technologies</Text>
+              <Text fontSize={"1rem"}>💼 Software Engineer</Text>
+              <Text fontSize={"1rem"}>📌 Kuala Lumpur, Malaysia</Text>
+              <Flex justify={"end"} pt={4}>
+                <Image alt="JurisTech Logo" maxW={'300px'} src="/images/juris.png" objectFit={"cover"}></Image>  
+              </Flex>
+            </Box>
+            <Box mx={"1rem"}>
+              <Divider orientation="vertical"></Divider>
+            </Box>
+            <Text height={"fit-content"} width={"50%"} pb={"2rem"}>
+              After finishing my course at Monash, I reached out to my internship company to work as a full time Software Engineer where I currently am today.
+              <br />
+              Writing code, smashing bugs, and doing my honest best to efficiently develop high quality web applications!
+              <br />
+            </Text>
+          </Stack>
+          </ChakraBox>
+          <Center h={"full"}>
+            <GoDotFill size={10}></GoDotFill>
+          </Center>
+          <ChakraBox 
+            initial={{ opacity: 0, y: 100}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            //@ts-ignore
+            transition={{duration: 0.5}}>
+          <Stack direction={"row"}>
+            <Box
+              height={"fit-content"}
+              width={"50%"}
+              textAlign={"end"}
+              pb={"2rem"}
+            >
+              <Text>Future</Text>
+              <Text fontSize={"1.5rem"} fontWeight={'semibold'}>Advancing my Career</Text>
               <Text fontSize={"1rem"}>📌 Anywhere</Text>
             </Box>
             <Box mx={"1rem"}>
               <Divider orientation="vertical"></Divider>
             </Box>
             <Text height={"fit-content"} width={"50%"} pb={"2rem"}>
-              As of September 2023, I am actively searching for jobs in the IT industry, particularly as a Software Engineer. 
+              I am always seeking opportunities with organizations that not only drive meaningful impact and innovation but also foster growth and development in my career.
               <br />
-              <br />
-              I&quot;m currently learning full-stack web development to expand my job oppurtunities, and this developing this website is part of my learning process!
-              <br />
-              <br />
-              If you think I would be a good fit at your company, please do contact me at my <Text as={'a'} href="/contact" color={'blue.300'}>contact page</Text>.
             </Text>
           </Stack>
           </ChakraBox>
