@@ -22,17 +22,16 @@ import {
 import { CheckIcon } from '@chakra-ui/icons'
 
 const skills = [
-  "Python",
-  "TypeScript",
-  "NextJS",
-  "Google Analytics",
-  "API",
-  "Java",
-  "R",
   "PHP",
+  "Oracle DB",
+  "JQuery",
+  "Python",
+  "React",
+  "NextJS",
+  "Java",
+  "Postman",
   "Git",
   "Linux",
-  "Oracle DB",
   "MongoDB",
   "C#",
   "Unity"
