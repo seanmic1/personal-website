@@ -105,6 +105,7 @@ export default function Experience() {
             <Text height={"fit-content"} width={"50%"} pb={"2rem"}>
               After finishing my course at Monash, I reached out to my internship company to work as a full time Software Engineer where I currently am today.
               <br />
+              <br />
               Writing code, smashing bugs, and doing my honest best to efficiently develop high quality web applications!
               <br />
             </Text>
@@ -134,7 +135,7 @@ export default function Experience() {
               <Divider orientation="vertical"></Divider>
             </Box>
             <Text height={"fit-content"} width={"50%"} pb={"2rem"}>
-              I am always seeking opportunities with organizations that not only drive meaningful impact and innovation but also foster growth and development in my career.
+              I am always <strong>seeking opportunities</strong> with organizations that not only drive meaningful impact and innovation but also <strong>foster growth and development in my career</strong>.
               <br />
             </Text>
           </Stack>
