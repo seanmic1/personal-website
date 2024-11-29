@@ -50,7 +50,7 @@ export default function CallToActionWithAnnotation() {
             transition={{ ease:'easeOut', duration: 0.5, delay: 0.5}}>
             <Center>
               <Text color={'gray.500'} w={'30rem'}>
-              A fresh Computer Science graduate with a drive to make a difference in this world.
+              Building Impactful Software, One Line of Code at a Time.
               </Text>
             </Center>
           </ChakraBox>
