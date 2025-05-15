@@ -25,7 +25,6 @@ const skills = [
   "PHP",
   "Oracle DB",
   "JQuery",
-  "Python",
   "React",
   "NextJS",
   "Java",
@@ -33,6 +32,7 @@ const skills = [
   "Git",
   "Linux",
   "MongoDB",
+  "Python",
   "C#",
   "Unity"
 ]
@@ -57,13 +57,9 @@ export default function Profile() {
             Hey! Thanks for visiting.
           </Heading>
           <Text letterSpacing={'wide'} lineHeight={'6'} pt={4}>
-          I am Sean Michael, a Computer Science Graduate currenty based in Doha, Qatar.
+          I've been using computers as long as I can remember so might as well make a job out of it by becoming a Software Engineer.
           <br></br>
-          I am working on some pet projects as a pass time as of now, including this website!
-          <br></br>
-          Aside from that, my hobbies are Dota 2 and playing music, particularly saxophone.
-          {/* <br></br>
-          I'm naturally a curious person, currently learning all sorts of frameworks or technologies available on the web. I learn fast and adapt even faster, something that is needed in today's software development landscape. If you think I'd be a good fit to your team, you can contact me here. */}
+          I love learning all sorts of frameworks or technologies available on the web.
           </Text>
         </Box>  
         <Box p={5} width={{base:'100%',md:'50%'}}>

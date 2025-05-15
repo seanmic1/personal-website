@@ -5,7 +5,6 @@ import {
   Flex,
   Text,
   IconButton,
-  Button,
   Stack,
   Collapse,
   Icon,
@@ -13,9 +12,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
-  ColorModeContext,
   Center,
   Image,
   useColorMode,
@@ -26,33 +23,59 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons'
+import { useEffect, useState } from 'react'
 import ColorModeButton from './ColorModeButton'
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode } = useColorMode()
+  const [showSmall, setShowSmall] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  // Scroll logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setShowSmall(true) // scrolling down
+      } else {
+        setShowSmall(false) // scrolling up
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
 
   return (
-    <Box position={'fixed'} w={'100%'} as='header' zIndex={'overlay'}>
+    <Box position={'fixed'} w={'100%'} as='header' zIndex={'overlay'} transition="all 0.3s ease">
       <Flex
         color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
-        py={{ base: 2 }}
+        minH={showSmall ? '40px' : '60px'}
+        py={showSmall ? 1 : 2}
         px={{ base: 4 }}
         borderBottom={1}
         borderColor={useColorModeValue('white', 'black')}
         align={'center'}
         bg={useColorModeValue('#ffffff70', '#00000070')}
-        boxShadow={useColorModeValue('0 4px 30px rgba(0, 0, 0, 0.1)','0 4px 30px rgba(255, 255, 255, 0.2)')}
+        boxShadow={useColorModeValue(
+          '0 4px 30px rgba(0, 0, 0, 0.1)',
+          '0 4px 30px rgba(255, 255, 255, 0.2)'
+        )}
         backdropFilter={'blur(5px)'}
         style={{
-          WebkitBackdropFilter : 'blur(5px)'
+          WebkitBackdropFilter: 'blur(5px)',
+          transition: 'all 0.3s ease',
         }}
-        >
+      >
         <Flex
           flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
+          display={{ base: 'flex', md: 'none' }}
+        >
           <IconButton
             onClick={onToggle}
             icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
@@ -61,10 +84,22 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <a href='/' >
-            {colorMode === "light" ? 
-          <Image src='/seanml_tp.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image> :
-          <Image src='/seanml_tp_white.png' alt='SEAN ML' boxSize={{base:'60px',md:'50px'}}></Image>}
+          <a href='/'>
+            {colorMode === 'light' ? (
+              <Image
+                src='/seanml_tp.png'
+                alt='SEAN ML'
+                boxSize={{ base: showSmall ? '45px' : '60px', md: showSmall ? '40px' : '50px' }}
+                transition="all 0.3s ease"
+              />
+            ) : (
+              <Image
+                src='/seanml_tp_white.png'
+                alt='SEAN ML'
+                boxSize={{ base: showSmall ? '45px' : '60px', md: showSmall ? '40px' : '50px' }}
+                transition="all 0.3s ease"
+              />
+            )}
           </a>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -75,11 +110,10 @@ export default function Navbar() {
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          spacing={6}>
-        </Stack>
+          spacing={6}
+        ></Stack>
 
-        <ColorModeButton></ColorModeButton>
-
+        <ColorModeButton />
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>

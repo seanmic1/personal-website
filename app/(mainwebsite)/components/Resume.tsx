@@ -8,8 +8,8 @@ export default function ResumePage() {
 
   const saveFile = () => {
     saveAs(
-      "/SeanResumeNew.pdf",
-      "SeanResume.pdf"
+      "/SeanResume20250512.pdf",
+      "Sean Michael Resume.pdf"
     );
   };
 
