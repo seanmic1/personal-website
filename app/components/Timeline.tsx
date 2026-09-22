@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { channels, isExternal } from "../data/contact";
-import { chapterOf, chapterStarts, previewOf, type TimelineNode } from "../data/timeline";
+import { chapterOf, chapterStarts, type TimelineNode } from "../data/timeline";
 import { useSound } from "../lib/audio/useSound";
 import {
   approach,
@@ -60,8 +60,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
   const markRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
-  /** Which node the pointer is on, and so which one is showing its picture. */
-  const [previewIndex, setPreviewIndex] = useState(-1);
   const [openId, setOpenId] = useState<string | null>(null);
   /** Kept mounted through the exit animation. */
   const [closingId, setClosingId] = useState<string | null>(null);
@@ -172,9 +170,8 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       const u = nodeU(i, s.pan, count);
       const opacity = nodeOpacity(u);
       el.style.setProperty("--ax", `${pan.toFixed(2)}px`);
-      // On the <li> as a variable, not as its opacity: the hover preview is a
-      // child of this element and must not be dimmed along with the dot. CSS
-      // hands the fade on to .node-hit alone.
+      // On the <li> as a variable rather than as its opacity, so CSS can hand
+      // the fade on to .node-hit alone and leave the rest of the node be.
       el.style.setProperty("--fade", opacity.toFixed(3));
       // Faded-out nodes must not catch the mouse, but they stay in the DOM and
       // in the accessibility tree so Tab still walks the whole timeline.
@@ -182,12 +179,9 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       const hittable = opacity >= 0.05;
       el.style.pointerEvents = hittable ? "auto" : "none";
       // Scrolling a hovered node off the row does not always cost it the
-      // pointer, so a preview could otherwise be left hanging over a dot that
-      // has faded out from under it.
-      if (!hittable && hoveredIndex.current === i) {
-        hoveredIndex.current = -1;
-        setPreviewIndex(-1);
-      }
+      // pointer, so the hover would otherwise stay claimed by a dot that has
+      // faded out from under it and swallow its next tick.
+      if (!hittable && hoveredIndex.current === i) hoveredIndex.current = -1;
       // Most of the row is invisible at any moment. Nothing below would be
       // seen, and the two tints each cost a string.
       if (opacity <= 0.001) continue;
@@ -366,7 +360,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       setOpenId(id);
       // The card is about to cover the string; the peek has done its job.
       hoveredIndex.current = -1;
-      setPreviewIndex(-1);
       lockScroll();
       beat(sim.current, TUNING.openBeat);
       wakeRef.current();
@@ -592,39 +585,19 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
                     nodeRefs.current[i] = el;
                   }}
                   className={axis === "x" ? "node-x" : "node-y"}
-                  // The preview overhangs its neighbours, and the row paints in
-                  // source order, so the node showing one has to come last.
-                  style={
-                    previewIndex === i
-                      ? { ...restingStyle(i), zIndex: 1 }
-                      : restingStyle(i)
-                  }
+                  style={restingStyle(i)}
                 >
-                  {previewIndex === i && (
-                    <span className="node-preview">
-                      {/* Plain <img>: this is a fixed-size decorative thumbnail
-                          the browser only fetches once the pointer asks for it,
-                          which is the one thing next/image would take away. */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={previewOf(node)} alt="" width={320} height={208} decoding="async" />
-                    </span>
-                  )}
                   <button
                     type="button"
                     tabIndex={-1}
-                    onPointerEnter={(e) => {
+                    onPointerEnter={() => {
                       if (hoveredIndex.current === i) return;
                       hoveredIndex.current = i;
                       sound.engine?.tick(i);
-                      // A tap fires pointerenter too, and on touch there is no
-                      // leave to follow it — the card is opening anyway, so a
-                      // picture flashing behind it is just noise.
-                      if (e.pointerType !== "touch") setPreviewIndex(i);
                     }}
                     onPointerLeave={() => {
                       if (hoveredIndex.current !== i) return;
                       hoveredIndex.current = -1;
-                      setPreviewIndex((p) => (p === i ? -1 : p));
                     }}
                     onClick={() => open(node.id)}
                     className="node-hit group"

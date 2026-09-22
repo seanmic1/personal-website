@@ -34,24 +34,10 @@ export const channels: Channel[] = [
     note: "Side projects, and this site.",
   },
   {
-    label: "Twitter",
-    // TODO(sean): confirm the handle — this is a guess from the others, and a
-    // wrong one points at a stranger. Delete this comment once checked.
-    value: "@seanmic1",
-    href: "https://twitter.com/seanmic1",
-    note: "Rarely, and mostly about work.",
-  },
-  {
     label: "LinkedIn",
     value: "seanmic1",
     href: "https://www.linkedin.com/in/seanmic1/",
     note: "The formal version of the same career.",
-  },
-  {
-    label: "Résumé",
-    value: "PDF",
-    href: "/SeanResume20250512.pdf",
-    note: "One page, kept current.",
   },
 ];
 

@@ -41,11 +41,6 @@ export type TimelineNode = {
   peek: string;
   /** Card body. Aim for 60–90 words total across all paragraphs. */
   body: string[];
-  /**
-   * Shown above the node while the pointer rests on it. Path under /public —
-   * see `previewOf` for what happens while this is missing.
-   */
-  image?: string;
   tech?: string[];
   link?: { label: string; href: string };
 };
@@ -267,19 +262,6 @@ export const timeline: TimelineNode[] = [
     ],
   },
 ];
-
-/**
- * What every node shows until it has a photograph of its own.
- *
- * Replacing one is two steps and no code: drop the file in /public/timeline,
- * then add `image: "/timeline/<file>"` to that node above. Nodes still without
- * one keep falling back here, so the row is never half-empty while the set is
- * being filled in.
- */
-export const PREVIEW_PLACEHOLDER = "/timeline/placeholder.svg";
-
-/** The image to show above `node` on hover. */
-export const previewOf = (node: TimelineNode): string => node.image ?? PREVIEW_PLACEHOLDER;
 
 const byKey = new Map(chapters.map((c) => [c.key, c]));
 

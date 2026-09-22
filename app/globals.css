@@ -13,28 +13,6 @@
   /* Gap between nodes along the string. Mirrors NODE_PITCH in
      string-motion.ts — change both together. */
   --pitch: 42%;
-
-  /* The hover preview's box. Height is the constraint that matters: the stage
-     is 300px tall on desktop and the string runs through the middle of it, so
-     anything taller than 150px minus the gap gets clipped by its overflow. */
-  --preview-w: 160px;
-  --preview-h: 104px;
-  --preview-gap: 24px;
-}
-
-/*
-  A neighbour sits one pitch out, at 8% and 92% of the stage, so half the
-  preview has to fit in 8% of the width or the stage's overflow takes a bite
-  out of it. That holds from about 1000px up; below it the box comes down to
-  suit. Narrower still and the string turns vertical, where there is room
-  either way.
-*/
-@media (max-width: 1023px) {
-  :root {
-    --preview-w: 124px;
-    --preview-h: 80px;
-    --preview-gap: 20px;
-  }
 }
 
 html {
@@ -98,12 +76,9 @@ body {
 }
 
 /*
-  A 44px target around a dot that is often much smaller than that.
-
-  The distance fade lives here rather than on the <li>, because the hover
-  preview is a sibling of this button: with the fade on the parent, hovering a
-  neighbour at 40% would hand back a preview at 40% too, and the further ones
-  would be all but invisible at exactly the moment you asked to see them.
+  A 44px target around a dot that is often much smaller than that. The distance
+  fade lives here rather than on the <li>, so the <li> is left free to carry the
+  pan transform without the two fighting over the same element.
 */
 .node-hit {
   position: relative;
@@ -133,55 +108,7 @@ body {
   filter: brightness(1.4);
 }
 
-/*
-  The picture that surfaces above whichever node the pointer is on.
-
-  A sibling of .node-hit rather than a child of it: it sits well outside the
-  44px target, and nesting it there would make the button's own box the thing
-  the pointer has to stay inside. Being inside the <li> is what matters — the
-  per-frame pan lands on the <li>'s transform, so this tracks the scroll for
-  free, with no second element for paint() to keep in step.
-*/
-.node-preview {
-  position: absolute;
-  bottom: calc(50% + var(--preview-gap));
-  left: 50%;
-  width: var(--preview-w);
-  height: var(--preview-h);
-  transform: translateX(-50%);
-  overflow: hidden;
-  border-radius: 3px;
-  border: 1px solid rgba(224, 160, 63, 0.28);
-  background: #12161a;
-  box-shadow:
-    0 18px 40px -16px rgba(0, 0, 0, 0.9),
-    0 0 0 1px rgba(11, 13, 16, 0.6);
-  /* The dot underneath is the target; this must never steal the pointer from
-     it, or moving onto the picture would read as leaving the node. */
-  pointer-events: none;
-  /* Rises out of the dot, the same gesture the card makes out of the copy. */
-  transform-origin: 50% 100%;
-  animation: preview-in 200ms cubic-bezier(0.22, 1, 0.32, 1) both;
-}
-
-.node-preview img {
-  display: block;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-@keyframes preview-in {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(8px) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0) scale(1);
-  }
-}
-
+/* The year beside each dot, tinted from cool grey to amber as it nears. */
 .node-year {
   position: absolute;
   white-space: nowrap;
