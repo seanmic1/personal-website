@@ -65,10 +65,10 @@ export default function Intro() {
       </div>
 
       <a
-        href="#early"
+        href="#work"
         className="absolute inset-x-0 bottom-8 mx-auto w-fit font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
       >
-        Or the whole story, 2001 to now ↓
+        Selected work ↓
       </a>
     </section>
   );

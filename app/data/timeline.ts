@@ -214,9 +214,9 @@ export const timeline: TimelineNode[] = [
     title: "Specialist Software Engineer",
     org: "JurisTech",
     place: "Kuala Lumpur, Malaysia",
-    peek: "Led delivery of several web apps for one of Indonesia's largest lenders. Also taught a receipt printer to listen.",
+    peek: "Tech lead on BFI Finance's loan collection system. Also taught a receipt printer to listen.",
     body: [
-      "I led the design and build of multiple web applications for BFI Finance, one of Indonesia's largest multi-finance companies: integrating with their API systems across several teams, negotiating scope so the deadline could survive it, and watching the production end-of-day batch, which is where you find out what you got wrong.",
+      "Tech lead on the loan collection system for BFI Finance, one of Indonesia's largest multi-finance companies: leading its design and build, integrating with their API systems across several teams, negotiating scope so the deadline could survive it, and watching the production end-of-day batch, which is where you find out what you got wrong.",
       "The rest was features, production fixes and training new hires — plus an internal library so our systems could drive a receipt printer one client used. The least glamorous thing I have shipped, and one of the most used.",
     ],
     tech: ["TypeScript", "React", "PHP", "Oracle", "PostgreSQL"],
@@ -229,10 +229,10 @@ export const timeline: TimelineNode[] = [
     title: "On call",
     org: "JurisTech · SWAT",
     place: "Kuala Lumpur, Malaysia",
-    peek: "Trained onto the crisis team. The worst call came at 2am and ran seven hours.",
+    peek: "First call for TNB, LPPSA and BFI when production broke. The worst one came at 2am and ran seven hours.",
     body: [
-      "I took the training for the SWAT team — the on-call engineers who are first contact whenever something goes wrong with a JurisTech product in production.",
-      "The worst of it started at two in the morning and ran seven hours. The cause turned out to be a third-party vendor who hadn't tested properly, which is simultaneously the most and least satisfying answer available. I owe that company a great deal. It was my first.",
+      "I trained onto the SWAT team — the on-call engineers who are first contact whenever a JurisTech product breaks in production. For me that meant critical incidents on Tenaga Nasional Berhad's outage management system, batch monitoring for LPPSA, and BFI's end-of-day batch, triaging and fixing whatever data went wrong between our systems and theirs.",
+      "The worst of it started at two in the morning and ran seven hours. The cause was a third-party vendor who hadn't tested properly — simultaneously the most and least satisfying answer available. I owe that company a great deal. It was my first.",
     ],
   },
   {

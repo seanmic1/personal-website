@@ -500,7 +500,9 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-5 py-4 sm:px-8">
+      {/* Faded rather than solid: the Intro and Selected work now scroll under
+          it, but the string's own stage should still read edge to edge. */}
+      <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ground via-ground/90 to-transparent px-5 pb-6 pt-4 sm:px-8">
         <a
           href="/"
           className="font-display text-[13px] font-extrabold tracking-[0.14em] text-ink transition-opacity hover:opacity-70"
@@ -508,12 +510,8 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
           SEAN MICHAEL
         </a>
         <nav className="flex items-center gap-5">
-          <a
-            href="/blog"
-            className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
-          >
-            Writing
-          </a>
+          {/* Writing is off the nav until there is something newer than 2023 to
+              point at. /blog and its posts still resolve for existing links. */}
           <a
             href="/contact"
             className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
