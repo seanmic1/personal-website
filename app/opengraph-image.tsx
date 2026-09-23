@@ -63,8 +63,8 @@ export default function Image() {
             Sean Michael
           </div>
           <div style={{ fontSize: 30, color: "#8B959D", marginTop: 24, lineHeight: 1.35 }}>
-            Software engineer, Kuala Lumpur. I build lending systems for banks in
-            Malaysia and Indonesia.
+            Software engineer, Kuala Lumpur. Access control at Qashier; before
+            that, lending systems in Indonesia.
           </div>
           <div
             style={{

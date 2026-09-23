@@ -9,7 +9,8 @@ import { chapters, nodesIn, type TimelineNode } from "../data/timeline";
  * server, visible to screen readers and crawlers, and working with no JS at all.
  *
  * This is why the interactive dots can be aria-hidden without hiding anything.
- * The three acts are real headings here, so the outline is navigable by heading
+ * The page's h1 belongs to the Intro above, so this starts at h2, with the
+ * three acts as real headings beneath it — the outline is navigable by heading
  * rather than only by walking fifteen items in a row.
  *
  * Contact is deliberately absent: the visible footer already exposes it as real
@@ -23,10 +24,11 @@ export default function TimelineDocument({ nodes }: { nodes: TimelineNode[] }) {
 
   return (
     <section className="sr-only">
-      <h1>Sean Michael — software engineer, Kuala Lumpur</h1>
+      <h2>The full story, in order</h2>
       <p>
-        Born in Indonesia, raised in Qatar, educated and now working in Malaysia. I build lending
-        and finance systems, and lately point-of-sale ones. What follows is the same story the
+        Born in Indonesia, raised in Qatar, educated and now working in Malaysia. I spent three
+        years building lending systems for an Indonesian finance company, and now work on access
+        control across Qashier&rsquo;s point-of-sale platforms. What follows is the same story the
         string on this page walks through, in order, in three parts.
       </p>
 
@@ -35,16 +37,16 @@ export default function TimelineDocument({ nodes }: { nodes: TimelineNode[] }) {
         if (!acts.length) return null;
         return (
           <section key={chapter.key}>
-            <h2>
+            <h3>
               {chapter.numeral}. {chapter.title}, {chapter.range}
-            </h2>
+            </h3>
             <ol>
               {acts.map((node) => (
                 <li key={node.id}>
-                  <h3>
+                  <h4>
                     {node.range ?? node.year} — {node.title}
                     {node.org ? `, ${node.org}` : ""}
-                  </h3>
+                  </h4>
                   {node.place && <p>{node.place}</p>}
                   {node.body.map((paragraph) => (
                     <p key={paragraph.slice(0, 24)}>{paragraph}</p>

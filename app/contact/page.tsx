@@ -6,7 +6,7 @@ import CopyButton from "./CopyButton";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Email, GitHub, Twitter and LinkedIn — every way to reach Sean Michael.",
+  description: "Email, GitHub and LinkedIn — every way to reach Sean Michael.",
   alternates: { canonical: "/contact" },
 };
 

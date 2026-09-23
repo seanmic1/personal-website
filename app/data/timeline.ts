@@ -16,13 +16,15 @@ export type Chapter = {
   /** Drawn on the string at the act's opening boundary. */
   numeral: string;
   title: string;
+  /** The chapter button's label under the string. One or two words. */
+  short: string;
   range: string;
 };
 
 export const chapters: Chapter[] = [
-  { key: "early", numeral: "I", title: "Early years & personal life", range: "2001 — 2020" },
-  { key: "university", numeral: "II", title: "University years", range: "2020 — 2023" },
-  { key: "career", numeral: "III", title: "Career", range: "2023 — now" },
+  { key: "early", numeral: "I", title: "Early years & personal life", short: "Early", range: "2001 — 2020" },
+  { key: "university", numeral: "II", title: "University years", short: "University", range: "2020 — 2023" },
+  { key: "career", numeral: "III", title: "Career", short: "Career", range: "2023 — now" },
 ];
 
 export type TimelineNode = {

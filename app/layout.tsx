@@ -28,6 +28,8 @@ const mono = IBM_Plex_Mono({
 });
 
 const SITE = "https://seanml.com";
+const DESCRIPTION =
+  "Backend engineer at Qashier, building access control systems. Previously built loan management software for banks and financial institutions across Malaysia and Indonesia.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -35,12 +37,10 @@ export const metadata: Metadata = {
     default: "Sean Michael — Software Engineer",
     template: "%s — Sean Michael",
   },
-  description:
-    "Software engineer in Kuala Lumpur. I build lending and finance systems for banks in Malaysia and Indonesia.",
+  description: DESCRIPTION,
   openGraph: {
     title: "Sean Michael — Software Engineer",
-    description:
-      "Software engineer in Kuala Lumpur. I build lending and finance systems for banks in Malaysia and Indonesia.",
+    description: DESCRIPTION,
     url: SITE,
     siteName: "Sean Michael",
     type: "website",

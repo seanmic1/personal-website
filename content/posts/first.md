@@ -26,7 +26,7 @@ For me, the most frustrating part of development was CSS, as it was a pain havin
 
 In fact, this frustration, or I might say "fear", of CSS persisted throughout my university life. I knew I didn't have much of a knack for design, so I never bothered learning or picking up web dev, as I thought I would have to create designs from scratch if I wanted to do anything noteworthy. I knew website templates existed, but who would that impress? So I just stuck to backend development technologies like databases and data science things like R and Python ML libraries. 
 
-Fast forward to earlier late July 2023, I just finished my university and had a nice vacation my family. Now I'm looking for a job, preferably in software development, and so the painful process of job hunting began. A month goes by and no hits. So I started looking for things to do that would be helpful for my career. I tried joining a game jam, but didn't see it through to the end as it was held for only two days and both my team mate and I were too inexperienced at Unity. Indeed, I was interested in backend technologies and data science, but how can I gain experience if I had no servers manage, databases to configure, or models to train.
+Fast forward to late July 2023: I had just finished university and had a nice vacation with my family. Now I'm looking for a job, preferably in software development, and so the painful process of job hunting began. A month goes by and no hits. So I started looking for things to do that would be helpful for my career. I tried joining a game jam, but didn't see it through to the end as it was held for only two days and both my team mate and I were too inexperienced at Unity. Indeed, I was interested in backend technologies and data science, but how can I gain experience if I had no servers to manage, databases to configure, or models to train.
 
 ### Second Chance
 
@@ -46,7 +46,9 @@ And so, you can see the result of that effort [here](https://github.com/seanmic1
 
 I did use a template, [dopefolio](https://github.com/rammcodes/Dopefolio), which was good to get me started as I got a handle of the basics and was able to modify it a bit to make it more mine. Other things I added was Google Analytics which helped me see stats like who viewed my page and where they came from. It was just for fun, but it helped me understand Google Analytics implementation and usage which could be a useful skill for the future.
 
-I shared this website and I was proud of it. It wasn't much, but it was something. However, I still felt like I wanted more than just this. I wanted to add a blog and I wanted to actually have stuff in my projects folder. I knew such frameworks for web dev existed like Ruby on Rails, React, Angular, and such. Each of them had their own capabilities and drawbacks, but that just made it harder for me to decide. I ultimately decide to settle on one that caught my eye, NextJS, which the website you are currently on uses!
+I shared this website and I was proud of it. It wasn't much, but it was something. However, I still felt like I wanted more than just this. I wanted to add a blog and I wanted to actually have stuff in my projects folder. I knew such frameworks for web dev existed like Ruby on Rails, React, Angular, and such. Each of them had their own capabilities and drawbacks, but that just made it harder for me to decide. I ultimately settled on one that caught my eye, NextJS, which the website you are currently on uses!
 
 I know it's been quite a read, so I'll talk about my learning process with NextJS on my next post.
+
+*That follow-up never got written — and this site has since been rebuilt from scratch, still on Next.js.*
 

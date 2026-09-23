@@ -6,6 +6,8 @@ readtime: '4 mins'
 coverimage: '/blogPics/letters.jpg'
 ---
 
+*Update: this post describes the first version. Dear Stranger has since moved to Postgres on Supabase, running on Google Cloud, and the moderation model below shipped — a Hugging Face model now scores every letter before it publishes.*
+
 In today's fast-paced digital world, genuine human connection can sometimes feel like a rare commodity. We often find ourselves immersed in the vast ocean of social media, where interactions can be shallow and fleeting. But what if there was a way to replicate those encounters with strangers that brighten our day in the real world, only in a digital space? That's precisely what "Dear Stranger" aims to do.
 
 ## The Genesis of "Dear Stranger"
@@ -13,9 +15,9 @@ In today's fast-paced digital world, genuine human connection can sometimes feel
 The concept behind "Dear Stranger" is beautifully simple: an app where people can anonymously write and reply to letters. Imagine leaving a heartfelt note in a public place, only to have it discovered and responded to by a passerby. "Dear Stranger" captures the essence of these chance encounters, providing a platform for meaningful, anonymous interactions in the digital realm.
 
 <figure>
-    <img src="https://github.com/seanmic1/personal-website/blob/main/public/blogPics/dearstrangerhome.png?raw=true"
-         alt="Dear Website Home Page">
-    <figcaption>Dear Website Home Page</figcaption>
+    <img src="/blogPics/dearstrangerhome.png"
+         alt="Dear Stranger home page">
+    <figcaption>Dear Stranger home page</figcaption>
 </figure>
 
 ## The Development Journey
@@ -44,13 +46,13 @@ To ensure a safe and positive environment, I intend to incorporate an NLP model 
 
 #### Letter Country of Origin (Perhaps?)
 
-I wanted an option for users to add a country to their letters, to let writers and responders a better idea of who's on the other side. However, I'm on the fence with this one, as the idea of complete anonymity would be gone. Some user feedback might be needed on this one if I do get a decent userbase.
+I wanted an option for users to add a country to their letters, to give writers and responders a better idea of who's on the other side. However, I'm on the fence with this one, as the idea of complete anonymity would be gone. Some user feedback might be needed on this one if I do get a decent userbase.
 
 ## Conclusion
 
 "Dear Stranger" is more than just an app; it's a digital sanctuary for meaningful, anonymous connections. Its development journey has been a testament to my commitment to fostering genuine human interactions in an increasingly digital world. As I continue to refine and expand its features, I look forward to seeing how "Dear Stranger" brings people together, one anonymous letter at a time.
 
-Stay tuned for updates on this exciting project, and in the meantime, feel free to explore the app and become a part of our growing community of strangers connecting through words.Dear Website Home Page
+Stay tuned for updates on this exciting project, and in the meantime, feel free to explore the app and become a part of our growing community of strangers connecting through words.
 
 To try it out, visit [Dear Stranger](https://dear-stranger.vercel.app/).
 

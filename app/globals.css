@@ -278,31 +278,6 @@ body {
   transform: scale(0.96);
 }
 
-/*
-  The sound toggle's rim. Two arcs at different rates and directions, so the
-  button reads as running rather than merely lit. Their opacity is driven from
-  the real output level in SoundToggle — these only supply the motion.
-*/
-@keyframes meter-arc {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.meter-arc-a,
-.meter-arc-b {
-  transform-box: view-box;
-  transform-origin: center;
-}
-
-.meter-arc-a {
-  animation: meter-arc 4.2s linear infinite;
-}
-
-.meter-arc-b {
-  animation: meter-arc 6.8s linear infinite reverse;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { channels, isExternal } from "../data/contact";
-import { chapterOf, chapterStarts, type TimelineNode } from "../data/timeline";
-import { useSound } from "../lib/audio/useSound";
+import { chapterOf, chapters, chapterStarts, type TimelineNode } from "../data/timeline";
 import {
   approach,
   beat,
@@ -36,7 +35,6 @@ import {
   type MotionState,
 } from "../lib/string-motion";
 import NodeCard from "./NodeCard";
-import SoundToggle from "./SoundToggle";
 
 /**
  * Screens of scroll per node. Sets how long each node dwells.
@@ -66,8 +64,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
   const [axis, setAxis] = useState<Axis>("x");
   const [reduced, setReduced] = useState(false);
 
-  const sound = useSound();
-
   // Mutable simulation state, deliberately outside React — this updates every
   // frame and must never trigger a render.
   const sim = useRef<MotionState>(createState());
@@ -77,7 +73,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
   const activeRef = useRef(0);
   const wakeRef = useRef<() => void>(() => {});
   const readItRef = useRef<HTMLButtonElement | null>(null);
-  const hoveredIndex = useRef(-1);
 
   const count = nodes.length;
   const openNode = nodes.find((n) => n.id === openId) ?? null;
@@ -178,10 +173,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       // visibility:hidden would drop them out of it entirely.
       const hittable = opacity >= 0.05;
       el.style.pointerEvents = hittable ? "auto" : "none";
-      // Scrolling a hovered node off the row does not always cost it the
-      // pointer, so the hover would otherwise stay claimed by a dot that has
-      // faded out from under it and swallow its next tick.
-      if (!hittable && hoveredIndex.current === i) hoveredIndex.current = -1;
       // Most of the row is invisible at any moment. Nothing below would be
       // seen, and the two tints each cost a string.
       if (opacity <= 0.001) continue;
@@ -244,14 +235,11 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       if (restingOnNode) s.pan = nodeAt;
 
       // Velocity comes from the row's own travel rather than the raw scroll, so
-      // the streak and the swoosh match what is actually moving on screen.
+      // the streak matches what is actually moving on screen.
       const velocity = (s.pan - prevPan) / dt;
       s.press = approach(s.press, isOpen ? 1 : 0, 8, dt);
 
       step(s, dt, velocity, count);
-
-      sound.engine?.setVelocity(velocity);
-      sound.engine?.setAmp(Math.max(s.pulse * 0.4, s.rush * 0.3));
 
       // The copy follows the snap target, which changes hands as soon as the
       // scroll commits — well before the node arrives. The dot's own beat is
@@ -307,7 +295,7 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       window.removeEventListener("scroll", wake);
       window.removeEventListener("resize", wake);
     };
-  }, [count, paint, readProgress, reduced, sound.engine]);
+  }, [count, paint, readProgress, reduced]);
 
   // Reduced motion: no beats, no loop — just land on the node and repaint.
   useEffect(() => {
@@ -358,16 +346,12 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       openIndexRef.current = nodes.findIndex((n) => n.id === id);
       setClosingId(null);
       setOpenId(id);
-      // The card is about to cover the string; the peek has done its job.
-      hoveredIndex.current = -1;
       lockScroll();
       beat(sim.current, TUNING.openBeat);
       wakeRef.current();
-      sound.engine?.setDucked(true);
-      sound.engine?.drop();
       if (pushHistory) history.pushState(null, "", `#${id}`);
     },
-    [nodes, sound.engine],
+    [nodes],
   );
 
   const close = useCallback(
@@ -382,20 +366,42 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       window.setTimeout(() => setClosingId((c) => (c === wasOpen ? null : c)), 240);
       unlockScroll();
       wakeRef.current();
-      sound.engine?.setDucked(false);
-      sound.engine?.release();
       if (popHistory && window.location.hash) {
         history.pushState(null, "", window.location.pathname);
       }
       readItRef.current?.focus();
     },
-    [sound.engine],
+    [],
   );
 
   // Deep link on load, and make the back button close the card.
   useEffect(() => {
+    // Only a link followed on an already-open page glides there; one the page
+    // was loaded with jumps, or it would sweep through every node first.
+    let loaded = false;
     const fromHash = () => {
       const id = window.location.hash.replace(/^#/, "");
+
+      // A chapter key (`/#career`) lands on that act's first node and leaves
+      // every card shut: it is how the Intro hands a visitor to the string.
+      // The fragment is dropped once used, so following the same link a second
+      // time still fires hashchange.
+      if (chapters.some((c) => c.key === id)) {
+        close(false);
+        const first = nodes.findIndex((n) => n.chapter === id);
+        const track = trackRef.current;
+        if (first >= 0 && track) {
+          const t = progressOf(first, count);
+          const smooth = loaded && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+          window.scrollTo({
+            top: track.offsetTop + t * (track.offsetHeight - window.innerHeight),
+            behavior: smooth ? "smooth" : "auto",
+          });
+        }
+        history.replaceState(null, "", window.location.pathname);
+        return;
+      }
+
       const i = nodes.findIndex((n) => n.id === id);
       if (i >= 0) {
         const track = trackRef.current;
@@ -412,6 +418,7 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       }
     };
     fromHash();
+    loaded = true;
     // popstate covers back/forward. hashchange covers a fragment arriving on an
     // already-loaded page — someone pasting /#bfi into the bar, or an in-page
     // anchor — which popstate never fires for.
@@ -519,7 +526,7 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       <div ref={trackRef} style={{ height: trackHeight }}>
         <div className="sticky top-0 flex h-screen flex-col items-stretch justify-center">
           {/* ── the string ── */}
-          <div ref={stageRef} className="relative h-[56vh] w-full shrink-0 overflow-hidden md:h-[300px]">
+          <div ref={stageRef} className="relative h-[52vh] w-full shrink-0 overflow-hidden md:h-[300px]">
             <svg
               className="absolute inset-0 h-full w-full"
               aria-hidden="true"
@@ -590,15 +597,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
                   <button
                     type="button"
                     tabIndex={-1}
-                    onPointerEnter={() => {
-                      if (hoveredIndex.current === i) return;
-                      hoveredIndex.current = i;
-                      sound.engine?.tick(i);
-                    }}
-                    onPointerLeave={() => {
-                      if (hoveredIndex.current !== i) return;
-                      hoveredIndex.current = -1;
-                    }}
                     onClick={() => open(node.id)}
                     className="node-hit group"
                   >
@@ -661,7 +659,31 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
               >
                 Read it
               </button>
-              <p className="mt-6 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-faint">
+              {/* Straight to an act, for the visitor who came for one of them —
+                  usually the third. */}
+              <nav aria-label="Chapters" className="mt-6 flex items-center gap-4 whitespace-nowrap sm:gap-5">
+                {chapters.map((c) => {
+                  const first = nodes.findIndex((n) => n.chapter === c.key);
+                  if (first < 0) return null;
+                  const current = c.key === act.key;
+                  return (
+                    <button
+                      key={c.key}
+                      type="button"
+                      onClick={() => scrollToNode(first)}
+                      aria-current={current ? "step" : undefined}
+                      className={`font-mono text-[10px] uppercase tracking-[0.2em] underline-offset-4 transition-colors ${
+                        current
+                          ? "text-string underline decoration-string/40"
+                          : "text-ink-faint hover:text-ink"
+                      }`}
+                    >
+                      {c.numeral}&nbsp;&nbsp;{c.short}
+                    </button>
+                  );
+                })}
+              </nav>
+              <p className="mt-3 font-mono text-[10.5px] uppercase tracking-[0.2em] text-ink-faint/70">
                 {activeIndex + 1} / {count} &nbsp;·&nbsp; scroll or {axis === "x" ? "← →" : "↑ ↓"}
               </p>
             </div>
@@ -718,8 +740,6 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
           </p>
         </div>
       </footer>
-
-      <SoundToggle sound={sound} />
     </>
   );
 }
