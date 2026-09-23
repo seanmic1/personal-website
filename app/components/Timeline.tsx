@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { channels, isExternal } from "../data/contact";
 import { chapterOf, chapters, chapterStarts, type TimelineNode } from "../data/timeline";
@@ -503,21 +504,21 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
       {/* Faded rather than solid: the Intro and Selected work now scroll under
           it, but the string's own stage should still read edge to edge. */}
       <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ground via-ground/90 to-transparent px-5 pb-6 pt-4 sm:px-8">
-        <a
+        <Link
           href="/"
           className="font-display text-[13px] font-extrabold tracking-[0.14em] text-ink transition-opacity hover:opacity-70"
         >
           SEAN MICHAEL
-        </a>
+        </Link>
         <nav className="flex items-center gap-5">
           {/* Writing is off the nav until there is something newer than 2023 to
               point at. /blog and its posts still resolve for existing links. */}
-          <a
+          <Link
             href="/contact"
             className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
           >
             Contact
-          </a>
+          </Link>
         </nav>
       </header>
 
@@ -727,12 +728,12 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
               </li>
             ))}
           </ul>
-          <a
+          <Link
             href="/contact"
             className="mt-6 inline-block font-mono text-[10px] uppercase tracking-[0.18em] text-string underline decoration-string/30 underline-offset-4 transition-colors hover:decoration-string"
           >
             Or send me a message →
-          </a>
+          </Link>
           <p className="mt-8 font-mono text-[10px] tracking-[0.14em] text-ink-faint">
             © {new Date().getFullYear()} · Kuala Lumpur
           </p>

@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# seanml.com
 
-## Getting Started
+Sean Michael's personal site: a short intro and the clients behind the work, then the whole
+story as a single scroll-driven timeline.
 
-First, run the development server:
+Next.js 16 (App Router, fully static), React 19, TypeScript and Tailwind CSS 3.
+
+## Running it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
+npm run dev     # http://localhost:3000
+npm run lint
+npm run build   # static build; every route is prerendered
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| To change…                        | Edit                                    |
+| --------------------------------- | --------------------------------------- |
+| The first screen                  | `app/components/Intro.tsx`              |
+| Selected work (clients)           | `app/data/work.ts`                      |
+| The timeline's chapters and nodes | `app/data/timeline.ts`                  |
+| Email, GitHub, LinkedIn           | `app/data/contact.ts`                   |
+| Blog posts                        | `content/posts/*.md`                    |
+| Search and link-preview text      | `app/layout.tsx`, `app/opengraph-image.tsx` |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The same facts appear in more than one place: the Intro, Selected work and the timeline nodes
+all describe the same career, so edit them together.
 
-## Learn More
+### Timeline nodes
 
-To learn more about Next.js, take a look at the following resources:
+Each node in `app/data/timeline.ts` belongs to one of three chapters (`early`, `university`,
+`career`). The field comments carry the limits that keep the layout intact:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `year` is drawn on the line: four characters at most.
+- `peek` is the line under the title as the node passes: twenty words at most.
+- `body` is the card that opens on "Read it": aim for 60–90 words across its paragraphs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+`app/components/TimelineDocument.tsx` renders every node as plain, screen-reader-only HTML, so
+the page is fully readable and crawlable without the animation. It is built from the same data
+and needs no separate edits.
 
-## Deploy on Vercel
+The motion itself lives in `app/lib/string-motion.ts`. `NODE_PITCH` there mirrors `--pitch` in
+`app/globals.css`; change both together.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Links into the page
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `/#<node-id>` (for example `/#now`) scrolls to that node and opens its card.
+- `/#early`, `/#university` and `/#career` scroll to the start of a chapter.
+- `/#work` scrolls to Selected work.
+
+### Blog
+
+Posts are Markdown with front matter (`title`, `date`, `author`, `readtime`, `coverimage`), and
+cover images go in `public/blogPics/`. `/blog` is currently left out of the header nav, but it and
+every post still build and resolve.
+
+## Elsewhere
+
+- The contact form posts straight to Formspree; the endpoint is in `app/contact/ContactForm.tsx`.
+- Analytics is Google Tag Manager, loaded in `app/layout.tsx`.
+- `/dearstranger` redirects to the Dear Stranger app, for links that already exist.

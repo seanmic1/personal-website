@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 export const alt = "Sean Michael — software engineer, Kuala Lumpur";
 export const size = { width: 1200, height: 630 };

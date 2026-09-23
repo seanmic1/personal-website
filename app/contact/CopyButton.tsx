@@ -1,18 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 /**
  * Sits beside the email address. The address itself is already a real mailto
  * link — this is only for the people who'd rather paste it somewhere else.
  */
+/** Clipboard support never changes during a visit, so there is nothing to listen to. */
+const noSubscription = () => () => {};
+
 export default function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
-  const [can, setCan] = useState(false);
-
   // Rendered only where it can actually work: clipboard access needs a secure
   // context, and a button that silently does nothing is worse than no button.
-  useEffect(() => setCan(!!navigator.clipboard), []);
+  // The server snapshot is false, so the button appears only after hydration.
+  const can = useSyncExternalStore(
+    noSubscription,
+    () => !!navigator.clipboard,
+    () => false,
+  );
 
   useEffect(() => {
     if (!copied) return;

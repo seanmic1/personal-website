@@ -8,13 +8,16 @@ export function generateStaticParams() {
   return getSortedPostsData().map((post) => ({ postId: post.id }));
 }
 
-export function generateMetadata({ params }: { params: { postId: string } }) {
-  const post = getSortedPostsData().find((p) => p.id === params.postId);
+type Props = { params: Promise<{ postId: string }> };
+
+export async function generateMetadata({ params }: Props) {
+  const { postId } = await params;
+  const post = getSortedPostsData().find((p) => p.id === postId);
   return post ? { title: post.title } : { title: "Post not found" };
 }
 
-export default async function Post({ params }: { params: { postId: string } }) {
-  const { postId } = params;
+export default async function Post({ params }: Props) {
+  const { postId } = await params;
   if (!getSortedPostsData().some((post) => post.id === postId)) notFound();
 
   const { title, date, author, readtime, coverimage, contentHtml } = await getPostData(postId);
