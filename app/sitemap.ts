@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getSortedPostsData } from "./lib/posts";
-
-const SITE = "https://seanml.com";
+import { SITE } from "./lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getSortedPostsData().map((post) => ({

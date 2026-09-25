@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { SITE } from "./lib/site";
 
 const display = Archivo({
   subsets: ["latin"],
@@ -27,7 +28,6 @@ const mono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const SITE = "https://seanml.com";
 const DESCRIPTION =
   "Backend engineer at Qashier, building access control systems. Previously built loan management software for banks and financial institutions across Malaysia and Indonesia.";
 

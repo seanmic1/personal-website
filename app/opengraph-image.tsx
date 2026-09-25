@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { HOST } from "./lib/site";
 
 export const alt = "Sean Michael — software engineer, Kuala Lumpur";
 export const size = { width: 1200, height: 630 };
@@ -74,7 +75,7 @@ export default function Image() {
               letterSpacing: "0.2em",
             }}
           >
-            SEANML.COM
+            {HOST.toUpperCase()}
           </div>
         </div>
       </div>
