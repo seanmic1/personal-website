@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { HOST } from "./lib/site";
 
-export const alt = "Sean Michael — software engineer, Kuala Lumpur";
+export const alt = "Sean Michael — backend engineer at Qashier";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -64,8 +64,9 @@ export default function Image() {
             Sean Michael
           </div>
           <div style={{ fontSize: 30, color: "#8B959D", marginTop: 24, lineHeight: 1.35 }}>
-            Software engineer, Kuala Lumpur. Access control at Qashier; before
-            that, lending systems in Indonesia.
+            Backend engineer at Qashier, building access control systems.
+            Previously, loan management software for banks across Malaysia and
+            Indonesia.
           </div>
           <div
             style={{

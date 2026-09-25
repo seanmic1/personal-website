@@ -1,7 +1,7 @@
 # Sean Michael — personal site
 
-Sean Michael's personal site: a short intro and the clients behind the work, then the whole
-story as a single scroll-driven timeline.
+Sean Michael's personal site: a short intro, the whole story as a single scroll-driven
+timeline, then the clients behind the work.
 
 Next.js 16 (App Router, fully static), React 19, TypeScript and Tailwind CSS 3. Deployed on
 Vercel from `main`, and live at https://seanml.vercel.app until seanml.com is registered again.

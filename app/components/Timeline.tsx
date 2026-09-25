@@ -46,7 +46,13 @@ import NodeCard from "./NodeCard";
  */
 const SCREENS_PER_NODE = 0.7;
 
-export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
+type Props = {
+  nodes: TimelineNode[];
+  /** Rendered after the string and before the end of the line. */
+  after?: React.ReactNode;
+};
+
+export default function Timeline({ nodes, after }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<SVGPathElement>(null);
@@ -705,6 +711,8 @@ export default function Timeline({ nodes }: { nodes: TimelineNode[] }) {
           )}
         </div>
       </div>
+
+      {after}
 
       {/* ── the end of the line ── */}
       <footer className="border-t border-line px-6 py-20 sm:px-10">

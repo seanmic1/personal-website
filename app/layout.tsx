@@ -34,12 +34,12 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: "Sean Michael — Software Engineer",
+    default: "Sean Michael — Backend Engineer",
     template: "%s — Sean Michael",
   },
   description: DESCRIPTION,
   openGraph: {
-    title: "Sean Michael — Software Engineer",
+    title: "Sean Michael — Backend Engineer",
     description: DESCRIPTION,
     url: SITE,
     siteName: "Sean Michael",

@@ -214,10 +214,10 @@ export const timeline: TimelineNode[] = [
     title: "Specialist Software Engineer",
     org: "JurisTech",
     place: "Kuala Lumpur, Malaysia",
-    peek: "Tech lead on BFI Finance's loan collection system. Also taught a receipt printer to listen.",
+    peek: "Tech lead for BFI Finance, plus Adira, Bank Islam and SME Bank. Also taught a receipt printer to listen.",
     body: [
-      "Tech lead on the loan collection system for BFI Finance, one of Indonesia's largest multi-finance companies: leading its design and build, integrating with their API systems across several teams, negotiating scope so the deadline could survive it, and watching the production end-of-day batch, which is where you find out what you got wrong.",
-      "The rest was features, production fixes and training new hires — plus an internal library so our systems could drive a receipt printer one client used. The least glamorous thing I have shipped, and one of the most used.",
+      "Tech lead on the loan collection system for BFI Finance, one of Indonesia's largest multi-finance companies: its design and build, API integrations across several teams, scope negotiated so the deadline could survive it, and the production end-of-day batch, which is where you find out what you got wrong.",
+      "Alongside it: design and development on Adira Finance's loan collection system, loan origination for Bank Islam, and upgrades to SME Bank's. Plus training new hires, and an internal library so our systems could drive a receipt printer — the least glamorous thing I have shipped, and one of the most used.",
     ],
     tech: ["TypeScript", "React", "PHP", "Oracle", "PostgreSQL"],
   },

@@ -2,8 +2,8 @@ import { delivery, onCall, type Engagement } from "../data/work";
 
 /**
  * The evidence under the Intro's one-line claim: who the work was actually for.
- * Sits between the Intro and the string, so a visitor meets it on their first
- * scroll and the story follows.
+ * Sits after the string and before the end of the line, as the summary of the
+ * career act a visitor has just walked through.
  */
 
 const label = "font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint";
@@ -33,7 +33,7 @@ function Group({ title, items }: { title: string; items: Engagement[] }) {
 
 export default function SelectedWork() {
   return (
-    <section id="work" aria-labelledby="work-title" className="scroll-mt-20 px-6 pb-28 pt-8 sm:px-10">
+    <section id="work" aria-labelledby="work-title" className="scroll-mt-20 border-t border-line px-6 py-24 sm:px-10">
       <div className="mx-auto w-full max-w-3xl">
         <h2
           id="work-title"
@@ -50,13 +50,6 @@ export default function SelectedWork() {
           <Group title="Built and maintained" items={delivery} />
           <Group title="On call" items={onCall} />
         </div>
-
-        <a
-          href="#early"
-          className="mt-14 inline-block font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
-        >
-          Then the whole story, 2001 to now ↓
-        </a>
       </div>
     </section>
   );

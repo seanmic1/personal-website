@@ -2,9 +2,8 @@
  * The clients behind "banks and financial institutions" in the Intro, named.
  *
  * Kept apart from the timeline on purpose: the timeline is ordered by date and
- * this is ordered by weight, and not every engagement here maps cleanly onto
- * one node. Where one does (BFI, the on-call work) the node says it too, so
- * edit the two together.
+ * this is ordered by weight. The same engagements are named in the 2025 node
+ * (`specialist`) and the on-call node (`swat`), so edit the three together.
  */
 
 export type Engagement = {

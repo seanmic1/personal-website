@@ -26,10 +26,11 @@ export default function TimelineDocument({ nodes }: { nodes: TimelineNode[] }) {
     <section className="sr-only">
       <h2>The full story, in order</h2>
       <p>
-        Born in Indonesia, raised in Qatar, educated and now working in Malaysia. I spent three
-        years building lending systems for an Indonesian finance company, and now work on access
-        control across Qashier&rsquo;s point-of-sale platforms. What follows is the same story the
-        string on this page walks through, in order, in three parts.
+        Born in Indonesia, raised in Qatar, educated and now working in Malaysia. I design and
+        build access control systems as a Backend Engineer at Qashier, after developing loan
+        management software for banks and financial institutions across Malaysia and Indonesia.
+        What follows is the same story the string on this page walks through, in order, in three
+        parts.
       </p>
 
       {chapters.map((chapter) => {
