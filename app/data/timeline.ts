@@ -24,7 +24,7 @@ export type Chapter = {
 export const chapters: Chapter[] = [
   { key: "early", numeral: "I", title: "Early years & personal life", short: "Early", range: "2001 — 2020" },
   { key: "university", numeral: "II", title: "University years", short: "University", range: "2020 — 2023" },
-  { key: "career", numeral: "III", title: "Career", short: "Career", range: "2023 — now" },
+  { key: "career", numeral: "III", title: "Career", short: "Career", range: "2024 — now" },
 ];
 
 export type TimelineNode = {
@@ -175,10 +175,9 @@ export const timeline: TimelineNode[] = [
     ],
   },
 
-  // ── III · Career ──────────────────────────────────────────────────────────
   {
     id: "dear-stranger",
-    chapter: "career",
+    chapter: "university",
     year: "2023",
     range: "Nov 2023 — 2024",
     title: "Dear Stranger",
@@ -191,6 +190,7 @@ export const timeline: TimelineNode[] = [
     tech: ["Next.js", "TypeScript", "Postgres", "Supabase", "GCP", "Hugging Face"],
     link: { label: "dear-stranger.vercel.app", href: "https://dear-stranger.vercel.app/" },
   },
+  // ── III · Career ──────────────────────────────────────────────────────────
   {
     id: "software-engineer",
     chapter: "career",
