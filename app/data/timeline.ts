@@ -236,6 +236,21 @@ export const timeline: TimelineNode[] = [
     ],
   },
   {
+    id: "biaskop",
+    chapter: "career",
+    year: "2026",
+    range: "May 2026 — present",
+    title: "Biaskop",
+    org: "Side project · Solo",
+    peek: "The same story from over a dozen Indonesian newsrooms, side by side and scored for bias on five axes.",
+    body: [
+      "Indonesian media belongs largely to a handful of conglomerates, several with a political party attached. Biaskop reads one story across outlets and scores every article on five axes of bias, with the owner's ties in front of the model as it reads.",
+      "Behind it, a scraper and an analyser on Cloud Run that never call each other — Postgres is the queue. What I'm proudest of is the audit that keeps it honest: swap the ethnic or religious group an article names, re-score it, and see whether the number moves.",
+    ],
+    tech: ["Python", "FastAPI", "OpenAI", "Postgres", "Supabase", "Cloud Run", "Terraform"],
+    link: { label: "biaskop.com", href: "https://biaskop.com/" },
+  },
+  {
     id: "qashier",
     chapter: "career",
     year: "2026",

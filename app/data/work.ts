@@ -1,66 +1,51 @@
 /**
- * The clients behind "banks and financial institutions" in the Intro, named.
+ * The things I built on my own time, newest first.
  *
- * Kept apart from the timeline on purpose: the timeline is ordered by date and
- * this is ordered by weight. The same engagements are named in the 2025 node
- * (`specialist`) and the on-call node (`swat`), so edit the three together.
+ * Each one also has a node on the timeline, under the same `id`. The node tells
+ * the story; this says what was built. Edit the two together.
  */
 
-export type Engagement = {
-  client: string;
-  country: "Malaysia" | "Indonesia";
-  /** What the system is. */
-  system: string;
-  /** What I did on it. */
-  role: string;
+export type Project = {
+  /** The timeline node's id. */
+  id: string;
+  name: string;
+  range: string;
+  /** What it is, in a line or two. */
+  summary: string;
+  /** What I built, and the parts worth asking about. */
+  points: string[];
+  tech: string[];
+  link?: { label: string; href: string };
 };
 
-/** Systems I designed, built or maintained. */
-export const delivery: Engagement[] = [
+export const projects: Project[] = [
   {
-    client: "BFI Finance",
-    country: "Indonesia",
-    system: "Loan collection system",
-    role: "Tech lead",
+    id: "biaskop",
+    name: "Biaskop",
+    range: "May 2026 — present",
+    summary:
+      "A bias observatory for Indonesian news. The same story from over a dozen outlets, side by side, each article scored on five axes of slant and one of sourcing.",
+    points: [
+      "A scraper reads twenty-odd RSS feeds every four hours, extracts each article with an LLM, and clusters coverage of one event into a single story thread — extending an existing thread rather than starting a second.",
+      "An analyser scores each article with its owner's political ties in context. The two never call each other: Postgres is the queue, and both go through OpenAI's Batch API at half the cost.",
+      "An audit of the scorer itself: swap the ethnic, religious or party group an article names, re-score both versions, and measure the shift against the model's own run-to-run noise.",
+      "Runs unattended as Cloud Run Jobs, provisioned in Terraform, with Postgres advisory locks so an overlapping run backs off instead of paying twice.",
+    ],
+    tech: ["Python", "FastAPI", "OpenAI Batch API", "Postgres", "Supabase", "Cloud Run", "Terraform", "TanStack Start"],
+    link: { label: "biaskop.com", href: "https://biaskop.com/" },
   },
   {
-    client: "Adira Finance",
-    country: "Indonesia",
-    system: "Loan collection system",
-    role: "Design and development",
-  },
-  {
-    client: "Bank Islam (BIMB)",
-    country: "Malaysia",
-    system: "Loan origination system",
-    role: "Developer",
-  },
-  {
-    client: "SME Bank",
-    country: "Malaysia",
-    system: "Loan collection system",
-    role: "Maintenance and upgrades",
-  },
-];
-
-/** Critical production issues, as one of the on-call SWAT engineers. */
-export const onCall: Engagement[] = [
-  {
-    client: "Tenaga Nasional Berhad",
-    country: "Malaysia",
-    system: "Outage management system",
-    role: "Critical production incidents",
-  },
-  {
-    client: "LPPSA",
-    country: "Malaysia",
-    system: "Batch processing",
-    role: "Batch monitoring",
-  },
-  {
-    client: "BFI Finance",
-    country: "Indonesia",
-    system: "End-of-day batch",
-    role: "Monitoring, with immediate triage and fixes for data issues between JurisTech and BFI",
+    id: "dear-stranger",
+    name: "Dear Stranger",
+    range: "Nov 2023 — 2024",
+    summary:
+      "Write an anonymous letter, and a stranger somewhere in the world writes back. Over 140 letters so far, and not one left without a reply.",
+    points: [
+      "Built solo while job-hunting after graduation: Next.js and TypeScript on the front, Postgres on Supabase and Google Cloud behind it.",
+      "A Hugging Face model scores every letter before it publishes. An anonymous inbox without a filter is unusable inside a day.",
+      "Shared on Reddit, which was kind to it.",
+    ],
+    tech: ["Next.js", "TypeScript", "Postgres", "Supabase", "GCP", "Hugging Face"],
+    link: { label: "dear-stranger.vercel.app", href: "https://dear-stranger.vercel.app/" },
   },
 ];
