@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { channels, isExternal } from "../data/contact";
 import { chapterOf, chapters, chapterStarts, type TimelineNode } from "../data/timeline";
@@ -36,6 +37,7 @@ import {
   type MotionState,
 } from "../lib/string-motion";
 import NodeCard from "./NodeCard";
+import SiteHeader from "./SiteHeader";
 
 /**
  * Screens of scroll per node. Sets how long each node dwells.
@@ -48,11 +50,10 @@ const SCREENS_PER_NODE = 0.7;
 
 type Props = {
   nodes: TimelineNode[];
-  /** Rendered after the string and before the end of the line. */
-  after?: React.ReactNode;
 };
 
-export default function Timeline({ nodes, after }: Props) {
+export default function Timeline({ nodes }: Props) {
+  const router = useRouter();
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<SVGPathElement>(null);
@@ -362,7 +363,7 @@ export default function Timeline({ nodes, after }: Props) {
   );
 
   const close = useCallback(
-    (popHistory = true) => {
+    (popHistory = true, refocus = true) => {
       if (!openRef.current) return;
       const wasOpen = openRef.current;
       openRef.current = null;
@@ -376,10 +377,16 @@ export default function Timeline({ nodes, after }: Props) {
       if (popHistory && window.location.hash) {
         history.pushState(null, "", window.location.pathname);
       }
-      readItRef.current?.focus();
+      if (refocus) readItRef.current?.focus();
     },
     [],
   );
+
+  /** The name in the header: shut any card and go back to the Intro. */
+  const toTop = useCallback(() => {
+    close(true, false);
+    window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+  }, [close, reduced]);
 
   // Deep link on load, and make the back button close the card.
   useEffect(() => {
@@ -388,6 +395,13 @@ export default function Timeline({ nodes, after }: Props) {
     let loaded = false;
     const fromHash = () => {
       const id = window.location.hash.replace(/^#/, "");
+
+      // The projects used to sit at the end of this page. They have a page of
+      // their own now, and links to where they were should still find them.
+      if (id === "work") {
+        router.replace("/projects");
+        return;
+      }
 
       // A chapter key (`/#career`) lands on that act's first node and leaves
       // every card shut: it is how the Intro hands a visitor to the string.
@@ -507,26 +521,7 @@ export default function Timeline({ nodes, after }: Props) {
 
   return (
     <>
-      {/* Faded rather than solid: the Intro and Selected work now scroll under
-          it, but the string's own stage should still read edge to edge. */}
-      <header className="fixed inset-x-0 top-0 z-30 flex items-center justify-between bg-gradient-to-b from-ground via-ground/90 to-transparent px-5 pb-6 pt-4 sm:px-8">
-        <Link
-          href="/"
-          className="font-display text-[13px] font-extrabold tracking-[0.14em] text-ink transition-opacity hover:opacity-70"
-        >
-          SEAN MICHAEL
-        </Link>
-        <nav className="flex items-center gap-5">
-          {/* Writing is off the nav until there is something newer than 2023 to
-              point at. /blog and its posts still resolve for existing links. */}
-          <Link
-            href="/contact"
-            className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint transition-colors hover:text-ink"
-          >
-            Contact
-          </Link>
-        </nav>
-      </header>
+      <SiteHeader onHome={toTop} />
 
       <div ref={trackRef} style={{ height: trackHeight }}>
         <div className="sticky top-0 flex h-screen flex-col items-stretch justify-center">
@@ -711,8 +706,6 @@ export default function Timeline({ nodes, after }: Props) {
           )}
         </div>
       </div>
-
-      {after}
 
       {/* ── the end of the line ── */}
       <footer className="border-t border-line px-6 py-20 sm:px-10">

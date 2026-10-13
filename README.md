@@ -1,7 +1,7 @@
 # Sean Michael — personal site
 
-Sean Michael's personal site: a short intro, the whole story as a single scroll-driven
-timeline, then the projects I built on the side.
+Sean Michael's personal site: a short intro and the whole story as a single scroll-driven
+timeline, plus a page of the projects I built on the side.
 
 Next.js 16 (App Router, fully static), React 19, TypeScript and Tailwind CSS 3. Deployed on
 Vercel from `main`, and live at https://seanml.vercel.app until seanml.com is registered again.
@@ -21,14 +21,15 @@ npm run build   # static build; every route is prerendered
 | To change…                        | Edit                                    |
 | --------------------------------- | --------------------------------------- |
 | The first screen                  | `app/components/Intro.tsx`              |
-| Selected work (projects)          | `app/data/work.ts`                      |
+| Projects (`/projects`)            | `app/data/work.ts`                      |
+| The header and its nav            | `app/components/SiteHeader.tsx`         |
 | The timeline's chapters and nodes | `app/data/timeline.ts`                  |
 | Email, GitHub, LinkedIn           | `app/data/contact.ts`                   |
 | Blog posts                        | `content/posts/*.md`                    |
 | Search and link-preview text      | `app/layout.tsx`, `app/opengraph-image.tsx` |
 
 The same facts appear in more than one place: the Intro and the timeline nodes describe the same
-career, and each project in Selected work has a timeline node of its own. Edit them together.
+career, and each project on `/projects` has a timeline node of its own. Edit them together.
 
 ### Timeline nodes
 
@@ -50,7 +51,7 @@ The motion itself lives in `app/lib/string-motion.ts`. `NODE_PITCH` there mirror
 
 - `/#<node-id>` (for example `/#now`) scrolls to that node and opens its card.
 - `/#early`, `/#university` and `/#career` scroll to the start of a chapter.
-- `/#work` scrolls to Selected work.
+- `/#work`, where the projects used to sit, now redirects to `/projects`.
 
 ### Blog
 

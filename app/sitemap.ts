@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
   return [
     { url: SITE, lastModified: new Date(), priority: 1 },
+    { url: `${SITE}/projects`, lastModified: new Date(), priority: 0.8 },
     { url: `${SITE}/blog`, lastModified: new Date(), priority: 0.5 },
     { url: `${SITE}/contact`, lastModified: new Date(), priority: 0.6 },
     ...posts,

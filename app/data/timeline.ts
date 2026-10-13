@@ -236,6 +236,22 @@ export const timeline: TimelineNode[] = [
     ],
   },
   {
+    id: "cassette-del-sol",
+    chapter: "career",
+    year: "2026",
+    range: "Feb 2026 — present",
+    title: "Cassette del Sol",
+    org: "Freelance · First client",
+    place: "Petaling Jaya, Malaysia",
+    peek: "Friends with a music studio and no website. Built one with them, then taught them to run it.",
+    body: [
+      "Jethro and Cass run a music studio in Petaling Jaya — guitar and piano lessons, production, live sound — with nothing online but Instagram and WhatsApp. I offered to build them a site. A favour between friends, but I ran it as a client job, to test the water before paid work.",
+      "We designed it together in Lovable, then I handled what the builder doesn't: the domain, metadata, Search Console. The real handover was teaching them to prompt their own changes. They do now, with me on call for advice.",
+    ],
+    tech: ["Lovable", "React", "DNS", "Google Search Console"],
+    link: { label: "cassettedelsol.com", href: "https://cassettedelsol.com/" },
+  },
+  {
     id: "biaskop",
     chapter: "career",
     year: "2026",
@@ -249,6 +265,20 @@ export const timeline: TimelineNode[] = [
     ],
     tech: ["Python", "FastAPI", "OpenAI", "Postgres", "Supabase", "Cloud Run", "Terraform"],
     link: { label: "biaskop.com", href: "https://biaskop.com/" },
+  },
+  {
+    id: "ifgf-qatar",
+    chapter: "career",
+    year: "2026",
+    range: "May 2026 — present",
+    title: "IFGF Qatar Connect",
+    org: "Volunteer · IFGF Qatar",
+    peek: "My home church in Doha kept its members in a 1,400-row spreadsheet. Now it's a form and a dashboard.",
+    body: [
+      "IFGF Qatar was my church when I lived in Doha, and its member list was an Excel sheet some 1,400 rows long — duplicates, people who had long since moved away, birthdays typed as both DD/MM and MM/DD.",
+      "Working with a church leader, I replaced it with a QR code on Sundays, a registration form with a selfie, and a dashboard. In five months, 136 people have registered. The careful part is the roles: an admin can only invite people who can look, not touch.",
+    ],
+    tech: ["Lovable", "Lovable Cloud", "React", "Role-based access"],
   },
   {
     id: "qashier",
